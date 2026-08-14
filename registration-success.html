@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Registrasi Berhasil — KargoOke</title>
+<meta name="description" content="Pendaftaran perusahaan Anda di KargoOke berhasil. Tim kami akan memverifikasi & mengaktifkan akun dalam 1×24 jam." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+/* design tokens (inlined for self-contained deploy — no FOUC) */
+/* KargoOke — design tokens */
+:root {
+  /* — Paper / surfaces — */
+  --color-paper:      oklch(99% 0.004 250);
+  --color-paper-2:    oklch(97.8% 0.006 250);
+  --color-paper-3:    oklch(95.5% 0.009 252);
+  --color-paper-ink:  oklch(19% 0.05 264);   /* dark panel surface */
+  --color-paper-ink2: oklch(24% 0.055 264);
+
+  /* — Ink / text — */
+  --color-ink:        oklch(23% 0.05 264);
+  --color-ink-2:      oklch(42% 0.04 262);
+  --color-muted:      oklch(55% 0.03 260);
+  --color-on-dark:    oklch(98% 0.006 250);
+  --color-on-dark-2:  oklch(80% 0.025 250);
+
+  /* — Rules — */
+  --color-rule:       oklch(90% 0.014 250);
+  --color-rule-2:     oklch(94% 0.01 250);
+  --color-rule-dark:  oklch(36% 0.04 260);
+
+  /* — Accent (brand blue #0B5FBF) — */
+  --color-accent:        oklch(50% 0.17 257);
+  --color-accent-strong: oklch(43% 0.16 258);
+  --color-accent-soft:   oklch(95% 0.04 252);
+  --color-accent-wash:   oklch(97% 0.02 252);
+  --color-accent-ink:    oklch(99% 0.004 250);
+
+  /* — Cyan (AI/future glow partner) — */
+  --color-cyan:       oklch(72% 0.13 220);
+  --color-cyan-soft:  oklch(94% 0.05 215);
+
+  /* — Highlight (brand yellow #FFC629) — used sparingly — */
+  --color-highlight:     oklch(84% 0.16 88);
+  --color-highlight-ink: oklch(28% 0.05 80);
+
+  /* — Focus — */
+  --color-focus:      oklch(54% 0.21 257);
+
+  /* — Mesh / glow palette — */
+  --mesh-blue:    oklch(60% 0.19 257 / 0.40);
+  --mesh-cyan:    oklch(78% 0.14 215 / 0.34);
+  --mesh-violet:  oklch(66% 0.14 285 / 0.20);
+  --mesh-soft:    oklch(92% 0.05 245 / 0.55);
+  --glow-accent:  0 0 0 1px oklch(60% 0.17 257 / 0.25), 0 18px 60px oklch(55% 0.18 257 / 0.30);
+  --glow-cyan:    0 0 48px oklch(72% 0.14 215 / 0.45);
+
+  /* — Fonts — */
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body:    "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono:    "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* — Type scale (bumped for readability) — */
+  --text-display:   clamp(2.8rem, 5.2vw + 0.6rem, 4.75rem);
+  --text-display-s: clamp(2.2rem, 3.8vw + 0.5rem, 3.4rem);
+  --text-4xl: clamp(1.85rem, 2.4vw + 0.6rem, 2.7rem);
+  --text-3xl: clamp(1.5rem, 1.5vw + 0.7rem, 2rem);
+  --text-2xl: 1.4rem;
+  --text-xl:  1.2rem;
+  --text-lg:  1.1rem;
+  --text-md:  1.0625rem;   /* 17px base */
+  --text-sm:  0.9375rem;   /* 15px */
+  --text-xs:  0.8125rem;   /* 13px */
+
+  /* — Spacing (4pt) — */
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 9rem;
+
+  /* — Radius — */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  /* — Motion — */
+  --dur-short: 140ms;
+  --dur-mid:   260ms;
+  --dur-long:  560ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* — Elevation — */
+  --shadow-sm: 0 1px 2px oklch(50% 0.08 257 / 0.06), 0 2px 6px oklch(50% 0.08 257 / 0.05);
+  --shadow-md: 0 10px 30px oklch(50% 0.1 257 / 0.10), 0 2px 8px oklch(50% 0.08 257 / 0.06);
+  --shadow-lg: 0 30px 70px oklch(45% 0.12 257 / 0.18), 0 8px 22px oklch(45% 0.1 257 / 0.08);
+
+  /* — z-index scale — */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-overlay: 1000;
+}
+</style>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font-body); font-size: var(--text-md); line-height: 1.6; color: var(--color-ink); background: var(--color-paper); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 700; line-height: 1.12; letter-spacing: -0.02em; margin: 0; color: var(--color-ink); }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; max-width: 100%; }
+:focus-visible { outline: 2.5px solid var(--color-focus); outline-offset: 2px; border-radius: 6px; }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-xs); white-space: nowrap; font-family: var(--font-body); font-weight: 600; font-size: var(--text-md); line-height: 1;
+  padding: 0.85rem 1.4rem; border-radius: var(--radius-pill); border: 1px solid transparent; cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out), border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+.btn .ico { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; flex: none; }
+.btn .ico svg { width: 15px; height: 15px; }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); box-shadow: 0 0 0 1px rgb(37 170 225 / 0.25), 0 14px 34px rgb(37 170 225 / 0.28); padding-inline-end: 1.05rem; }
+.btn--primary .ico { background: oklch(100% 0 0 / 0.18); }
+.btn--primary:hover { background: var(--color-accent-strong); transform: translateY(-2px); box-shadow: 0 0 0 1px rgb(37 170 225 / 0.3), 0 20px 48px rgb(37 170 225 / 0.4); }
+.btn--primary:active { transform: translateY(0); }
+.btn--ghost { background: transparent; color: var(--color-ink-2); border-color: var(--color-rule); }
+.btn--ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ───────── Auth split layout ───────── */
+.auth {
+  --color-accent: #25AAE1; --color-accent-strong: #1D8CBB; --color-accent-soft: #DCF1FF; --color-accent-ink: #FAFCFE;
+  --color-cyan: #33AFE5; --color-highlight: #F3EC19; --color-focus: #1D8CBB;
+  min-height: 100vh; display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+}
+
+/* left brand panel */
+.auth__brand { position: sticky; top: 0; height: 100vh; overflow: hidden; color: #FAFCFE;
+  background: linear-gradient(158deg, #33AFE5 0%, #1D8CBB 52%, #175976 100%);
+  padding: clamp(1.8rem, 3vw, 3.2rem); display: flex; flex-direction: column; }
+.auth__brand-deco { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.auth__brand-deco span { position: absolute; border-radius: 50%; filter: blur(80px); }
+.auth__brand-deco .b1 { width: 460px; height: 420px; right: -22%; top: -18%; background: radial-gradient(circle, rgb(255 255 255 / 0.22), transparent 68%); }
+.auth__brand-deco .b2 { width: 420px; height: 380px; left: -24%; bottom: -16%; background: radial-gradient(circle, rgb(243 236 25 / 0.20), transparent 70%); }
+.auth__brand-deco .smilewm { position: absolute; right: -60px; bottom: 40px; width: 320px; height: 200px; opacity: 0.12; }
+.auth__logo { position: relative; z-index: 1; display: inline-flex; align-items: center; }
+.auth__logo .wm { position: relative; font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; color: #FAFCFE; }
+.auth__logo .wm .smilearc { position: absolute; left: 50%; bottom: -7px; width: 40px; height: 13px; transform: translateX(-52%); }
+.auth__logo img { display: block; height: 32px; width: auto; }
+.auth__brand-lede { position: relative; z-index: 1; margin-top: clamp(1.6rem, 3vw, 2.6rem); }
+.auth__brand-lede .eyebrow { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #F3EC19; }
+.auth__brand-lede .eyebrow svg { width: 14px; height: 14px; }
+.auth__brand-lede h1 { color: #FAFCFE; font-size: clamp(1.7rem, 2.2vw, 2.3rem); margin-top: var(--space-md); }
+.auth__brand-lede h1 span { color: #F3EC19; }
+.auth__brand-lede p { color: rgb(250 252 254 / 0.86); font-size: var(--text-md); line-height: 1.6; margin-top: var(--space-sm); max-width: 34ch; }
+
+/* vertical stepper (both done) */
+.vsteps { position: relative; z-index: 1; margin-top: clamp(2rem, 4vw, 3.4rem); display: flex; flex-direction: column; }
+.vstep { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding-bottom: 30px; }
+.vstep:last-child { padding-bottom: 0; }
+.vstep__ico { position: relative; }
+.vstep__dot { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #FAFCFE; background: #FAFCFE; color: #1D8CBB;
+  display: grid; place-items: center; position: relative; z-index: 1; }
+.vstep__dot .chk { width: 20px; height: 20px; }
+.vstep__line { position: absolute; top: 44px; left: 21px; width: 2px; height: calc(100% - 44px + 30px); background: #F3EC19; }
+.vstep:last-child .vstep__line { display: none; }
+.vstep__tx { padding-top: 8px; }
+.vstep__tx b { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: #FAFCFE; }
+.vstep__tx span { font-size: var(--text-sm); color: rgb(250 252 254 / 0.66); }
+
+.auth__trust { position: relative; z-index: 1; margin-top: auto; padding-top: var(--space-xl); display: flex; flex-wrap: wrap; gap: var(--space-xs); }
+.auth__trust span { display: inline-flex; align-items: center; gap: 6px; padding: 0.35rem 0.75rem; border-radius: var(--radius-pill); background: rgb(255 255 255 / 0.14); font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.02em; color: #FAFCFE; }
+
+.auth__progress { display: none; }
+
+/* right panel */
+.auth__form { position: relative; min-height: 100vh; padding: clamp(1.6rem, 3vw, 3rem) clamp(1.4rem, 4vw, 4rem); display: flex; flex-direction: column; }
+.auth__top { display: flex; align-items: center; justify-content: flex-end; gap: var(--space-md); font-size: var(--text-sm); color: var(--color-muted); }
+.auth__top a { color: var(--color-ink-2); font-weight: 500; }
+.auth__top a:hover { color: var(--color-accent); }
+.auth__top .signin b { color: var(--color-accent); font-weight: 600; }
+.auth__body { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; max-width: 560px; width: 100%; margin-inline: auto; padding-block: clamp(1.5rem, 3vw, 2.5rem); }
+
+/* ── Success ── */
+.success__badge { position: relative; width: 96px; height: 96px; }
+.success__badge .ring { position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #23C27B, #17B26A); box-shadow: 0 16px 40px rgb(23 178 106 / 0.34); display: grid; place-items: center;
+  animation: badgePop .5s var(--ease-out) both; }
+@keyframes badgePop { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+.success__badge .ring svg { width: 48px; height: 48px; }
+.success__badge .ring svg path { stroke-dasharray: 40; stroke-dashoffset: 40; animation: drawCheck .45s var(--ease-out) .32s forwards; }
+@keyframes drawCheck { to { stroke-dashoffset: 0; } }
+.success__badge .pulse { position: absolute; inset: 0; border-radius: 50%; border: 2px solid #23C27B; opacity: 0; animation: badgePulse 2.4s ease-out .8s infinite; }
+@keyframes badgePulse { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(1.7); opacity: 0; } }
+.success__badge .cft { position: absolute; width: 8px; height: 8px; border-radius: 2px; opacity: 0; }
+.success__badge .cft.c1 { background: #F3EC19; left: -12px; top: 8px; animation: cft .7s var(--ease-out) .5s both; }
+.success__badge .cft.c2 { background: #25AAE1; right: -14px; top: 0; border-radius: 50%; animation: cft .7s var(--ease-out) .58s both; }
+.success__badge .cft.c3 { background: #33AFE5; right: -6px; bottom: 6px; animation: cft .7s var(--ease-out) .64s both; }
+.success__badge .cft.c4 { background: #F3EC19; left: 2px; top: -14px; border-radius: 50%; animation: cft .7s var(--ease-out) .54s both; }
+@keyframes cft { 0% { opacity: 0; transform: scale(0) translate(0,0); } 40% { opacity: 1; } 100% { opacity: 0; transform: scale(1) translate(var(--dx,0), var(--dy,-18px)); } }
+.success__badge .c1 { --dx: -10px; --dy: -8px; } .success__badge .c2 { --dx: 12px; --dy: -14px; } .success__badge .c3 { --dx: 10px; --dy: 8px; } .success__badge .c4 { --dx: -4px; --dy: -20px; }
+
+.success__eyebrow { margin-top: var(--space-xl); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: #17B26A; font-weight: 600; }
+.success h1 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: 10px; }
+.success h1 span { color: var(--color-accent); }
+.success__lede { color: var(--color-ink-2); font-size: var(--text-lg); line-height: 1.6; margin-top: var(--space-md); max-width: 46ch; }
+.success__lede b { color: var(--color-ink); font-weight: 600; }
+
+.success__ref { display: inline-flex; align-items: center; gap: 10px; margin-top: var(--space-lg); padding: 0.7rem 1.1rem; border-radius: var(--radius-md); background: var(--color-accent-soft); }
+.success__ref .k { font-size: var(--text-xs); color: var(--color-accent-strong); font-weight: 500; }
+.success__ref .v { font-family: var(--font-mono); font-weight: 600; color: #1D8CBB; letter-spacing: 0.02em; }
+
+.success__steps { list-style: none; margin: clamp(1.6rem, 3vw, 2.2rem) 0 0; padding: 0; display: flex; flex-direction: column; gap: 2px; width: 100%; max-width: 460px; }
+.success__step { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding-bottom: 20px; position: relative; }
+.success__step:last-child { padding-bottom: 0; }
+.success__step .si { position: relative; }
+.success__step .sd { width: 40px; height: 40px; border-radius: 12px; background: var(--color-accent-soft); color: var(--color-accent); display: grid; place-items: center; }
+.success__step .sd svg { width: 19px; height: 19px; }
+.success__step .sline { position: absolute; top: 40px; left: 19px; width: 2px; height: 20px; background: var(--color-rule-2); }
+.success__step:last-child .sline { display: none; }
+.success__step .st { padding-top: 3px; }
+.success__step .st b { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: var(--color-ink); }
+.success__step .st span { font-size: var(--text-sm); color: var(--color-ink-2); line-height: 1.5; }
+
+.success__actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: clamp(1.8rem, 3.5vw, 2.6rem); }
+
+/* ───────── Responsive ───────── */
+@media (max-width: 60rem) {
+  .auth { grid-template-columns: 1fr; min-height: auto; }
+  .auth__brand { position: static; height: auto; flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-md); padding: 1rem clamp(1.1rem, 4vw, 2rem); }
+  .auth__brand-deco .smilewm { display: none; }
+  .auth__brand-lede, .vsteps, .auth__trust { display: none; }
+  .auth__progress { display: flex; align-items: center; gap: 12px; }
+  .auth__progress .lbl { font-family: var(--font-mono); font-size: var(--text-xs); color: rgb(250 252 254 / 0.9); white-space: nowrap; }
+  .auth__progress .bars { display: flex; gap: 6px; }
+  .auth__progress .bars i { width: 30px; height: 5px; border-radius: 3px; background: #F3EC19; }
+  .auth__form { min-height: auto; }
+  .auth__body { align-items: flex-start; }
+}
+@media (max-width: 40rem) {
+  .success__actions { flex-direction: column; align-items: stretch; }
+  .success__actions .btn { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<main class="auth" data-step="done">
+  <!-- ── Left brand panel ── -->
+  <aside class="auth__brand">
+    <div class="auth__brand-deco" aria-hidden="true">
+      <span class="b1"></span><span class="b2"></span>
+      <svg class="smilewm" viewBox="0 0 200 120" fill="none"><circle cx="52" cy="40" r="14" fill="#FAFCFE"/><circle cx="96" cy="38" r="24" stroke="#FAFCFE" stroke-width="10"/><path d="M40 66c20 30 78 30 98 0" stroke="#F3EC19" stroke-width="12" stroke-linecap="round"/></svg>
+    </div>
+
+    <a href="index.html" class="auth__logo" aria-label="KargoOke beranda"><img src="assets/logo-white.png" alt="KargoOke" /></a>
+
+    <div class="auth__progress" aria-hidden="true">
+      <span class="lbl">Selesai ✓</span>
+      <span class="bars"><i></i><i></i></span>
+    </div>
+
+    <div class="auth__brand-lede">
+      <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>Registrasi Selesai</span>
+      <h1>Selamat bergabung — logistik Anda mulai jadi <span>menyenangkan</span>.</h1>
+      <p>Data perusahaan Anda sudah kami terima. Tinggal satu langkah verifikasi dari tim kami.</p>
+    </div>
+
+    <ol class="vsteps" aria-label="Langkah registrasi selesai">
+      <li class="vstep vstep--1">
+        <div class="vstep__ico"><div class="vstep__dot"><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><span class="vstep__line"></span></div>
+        <div class="vstep__tx"><b>Data Perusahaan</b><span>Identitas &amp; alamat legal perusahaan</span></div>
+      </li>
+      <li class="vstep vstep--2">
+        <div class="vstep__ico"><div class="vstep__dot"><svg class="chk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M20 6 9 17l-5-5"/></svg></div><span class="vstep__line"></span></div>
+        <div class="vstep__tx"><b>Administrator</b><span>Akun PIC &amp; kontak utama</span></div>
+      </li>
+    </ol>
+
+    <div class="auth__trust" aria-hidden="true">
+      <span>ISO 27001:2022</span><span>PSE Kominfo</span><span>CEISA 4.0</span>
+    </div>
+  </aside>
+
+  <!-- ── Right success panel ── -->
+  <section class="auth__form">
+    <div class="auth__top">
+      <span class="signin">Butuh bantuan? <a href="TentangKami.html#kontak"><b>Hubungi kami</b></a></span>
+    </div>
+
+    <div class="auth__body">
+      <div class="success">
+        <div class="success__badge" aria-hidden="true">
+          <span class="cft c1"></span><span class="cft c2"></span><span class="cft c3"></span><span class="cft c4"></span>
+          <span class="pulse"></span>
+          <span class="ring"><svg viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+        </div>
+
+        <div class="success__eyebrow">Pendaftaran terkirim</div>
+        <h1>Registrasi <span>berhasil!</span></h1>
+        <p class="success__lede">Terima kasih! Data perusahaan Anda sudah kami terima. Tim KargoOke akan memverifikasi &amp; mengaktifkan akun Anda dalam <b>1×24 jam kerja</b>.</p>
+
+        <div class="success__ref">
+          <span class="k">No. Registrasi</span>
+          <span class="v">KO-2026-000271</span>
+        </div>
+
+        <ol class="success__steps">
+          <li class="success__step">
+            <div class="si"><div class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></div><span class="sline"></span></div>
+            <div class="st"><b>Cek email konfirmasi</b><span>Tautan verifikasi sudah dikirim ke email PIC yang Anda daftarkan.</span></div>
+          </li>
+          <li class="success__step">
+            <div class="si"><div class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><span class="sline"></span></div>
+            <div class="st"><b>Verifikasi oleh tim kami</b><span>Kami memeriksa data legal perusahaan Anda — biasanya kurang dari 1×24 jam.</span></div>
+          </li>
+          <li class="success__step">
+            <div class="si"><div class="sd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div></div>
+            <div class="st"><b>Akun aktif &amp; siap dipakai</b><span>Login ke portal B2B dan mulai jalankan seluruh ekosistem KargoOke.</span></div>
+          </li>
+        </ol>
+
+        <div class="success__actions">
+          <a href="index.html" class="btn btn--primary">Kembali ke Beranda <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a href="index.html#login" class="btn btn--ghost">Masuk Portal B2B</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

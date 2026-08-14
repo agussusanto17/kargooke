@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Demo Gratis — KargoOke</title>
+<meta name="description" content="Coba KargoOke gratis. Lihat langsung platform logistik digital terintegrasi CEISA 4.0 — buat akun dalam 3 langkah, tanpa komitmen, tanpa risiko." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+/* KargoOke — Demo Gratis · full site page · brand sky-blue #25AAE1 + lemon #F3EC19 · style follows index.html */
+:root{
+  --blue-25:#F3FBFE;--blue-50:#ECF7FD;--blue-100:#CBEDFB;--blue-200:#9DDCF5;--blue-300:#69C9F0;--blue-400:#45B8E9;--blue-500:#33AFE5;--blue-600:#25AAE1;--blue-700:#1D8CBB;--blue-800:#1A7097;--blue-900:#175976;--blue-950:#103F57;
+  --yellow-50:#FEFEE8;--yellow-100:#FCFBC0;--yellow-200:#F9F485;--yellow-300:#F6EF4A;--yellow-400:#F3EC19;--yellow-600:#AEA80C;--yellow-ink:#3A3600;
+  --ink:#141C2E;--ink-2:#48546B;--muted:#6C7688;--paper:#FFFFFF;--paper-2:#F7F9FC;--paper-3:#EFF2F7;--rule:#E6EBF2;--rule-2:#F0F3F8;
+  --dark:#0E1A2B;--dark-2:#16273D;--on-dark:#F5F8FC;--on-dark-2:#B9C6D8;--rule-dark:#2A3A52;
+  --accent:var(--blue-600);--accent-strong:var(--blue-700);--accent-soft:var(--blue-50);--accent-wash:var(--blue-25);--accent-ink:#FFFFFF;
+  --highlight:var(--yellow-400);--green:#17B26A;--green-soft:#E9FBF1;
+  --fd:"Plus Jakarta Sans",system-ui,sans-serif;--fb:"Plus Jakarta Sans",system-ui,sans-serif;--fm:"Inter",system-ui,sans-serif;
+  --t-display:clamp(2.6rem, 4.6vw + 0.6rem, 4.25rem);--t-4xl:clamp(1.85rem, 2.2vw + 0.6rem, 2.7rem);--t-3xl:clamp(1.45rem, 1.4vw + 0.7rem, 1.95rem);--t-2xl:1.4rem;--t-xl:1.2rem;--t-lg:1.1rem;--t-md:1.0625rem;--t-sm:0.9375rem;--t-xs:0.8125rem;
+  --s-2xs:.25rem;--s-xs:.5rem;--s-sm:.75rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.5rem;--s-2xl:4rem;--s-3xl:6.5rem;
+  --r-sm:10px;--r-md:16px;--r-lg:24px;--r-xl:32px;--r-card:20px;--r-pill:999px;
+  --ease:cubic-bezier(.16,1,.3,1);--dur:.24s;
+  --sh-sm:0 1px 2px rgba(20,60,120,.06),0 2px 6px rgba(20,60,120,.05);
+  --sh-md:0 10px 30px rgba(20,60,120,.10),0 2px 8px rgba(20,60,120,.06);
+  --sh-lg:0 30px 70px rgba(15,50,110,.16),0 8px 22px rgba(15,50,110,.08);
+  --glow:0 0 0 1px rgba(37,170,225,.25),0 16px 44px rgba(37,170,225,.30);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--fb);font-size:var(--t-md);line-height:1.7;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin:0;color:var(--ink);overflow-wrap:anywhere;min-width:0}
+p{margin:0}a{color:inherit;text-decoration:none}ul{margin:0;padding:0;list-style:none}svg{display:block;max-width:100%}
+:focus-visible{outline:2.5px solid var(--blue-500);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:1280px;margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
+.accent{color:var(--accent)}
+.eyebrow{display:inline-flex;align-items:center;gap:var(--s-xs);padding:.4rem .85rem;border-radius:var(--r-pill);background:var(--accent-soft);color:var(--accent-strong);font-family:var(--fm);font-size:var(--t-xs);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.eyebrow svg{width:14px;height:14px}
+.head{max-width:46ch;margin:0 auto var(--s-2xl);text-align:center;display:flex;flex-direction:column;align-items:center;gap:var(--s-md)}
+.head h2{font-size:var(--t-4xl)}
+.head p{color:var(--ink-2);font-size:var(--t-lg);line-height:1.6;max-width:56ch}
+.section{padding-block:var(--s-3xl)}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:var(--s-xs);white-space:nowrap;font-family:var(--fb);font-weight:600;font-size:var(--t-md);line-height:1;padding:.9rem 1.1rem .9rem 1.5rem;border-radius:var(--r-pill);border:1px solid transparent;cursor:pointer;transition:background-color var(--dur) var(--ease),transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.btn .ico{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;flex:none}
+.btn .ico svg{width:15px;height:15px}
+.btn--primary{background:var(--accent);color:var(--accent-ink);box-shadow:var(--glow)}
+.btn--primary .ico{background:rgba(255,255,255,.2)}
+.btn--primary:hover{background:var(--accent-strong);transform:translateY(-2px)}
+.btn--ghost{background:var(--paper);color:var(--ink);border-color:var(--rule);padding:.9rem 1.5rem}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn--on-dark{background:rgba(255,255,255,.08);color:var(--on-dark);border-color:var(--rule-dark);padding:.9rem 1.5rem}
+.btn--on-dark:hover{border-color:var(--highlight);color:var(--highlight)}
+.btn--wa svg{width:19px;height:19px;flex:none}
+/* nav — follows index.html */
+.nav-spacer{height:74px}
+.nav{position:fixed;inset-block-start:0;inset-inline:0;z-index:100;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);border-bottom:1px solid var(--rule-2)}
+.nav__inner{width:100%;max-width:1280px;margin-inline:auto;display:flex;align-items:center;gap:var(--s-lg);padding:.75rem clamp(1.1rem,4vw,2.5rem)}
+.brand{display:inline-flex;align-items:center;gap:2px;font-family:var(--fd);font-weight:700;font-size:1.45rem;letter-spacing:-.03em}
+.brand--logo{position:relative;color:var(--blue-600);font-weight:800}
+.brand--logo img{display:block;height:30px;width:auto}
+.footer .brand--logo img{height:32px}
+.nav__links{display:flex;gap:var(--s-lg);margin-inline-start:var(--s-md);margin-inline-end:auto}
+.nav__links a{position:relative;font-size:var(--t-sm);color:var(--ink-2);font-weight:500;padding:.4rem 0;transition:color var(--dur) var(--ease)}
+.nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--accent);border-radius:2px;transition:right var(--dur) var(--ease)}
+.nav__links a:hover{color:var(--ink)}.nav__links a:hover::after{right:0}
+.nav__links a.is-active{color:var(--accent);font-weight:600}
+.nav__links a.is-active::after{content:none}
+.nav__actions{display:flex;align-items:center;gap:var(--s-sm)}
+.nav__login{font-size:var(--t-sm);font-weight:600;color:#525252;padding:.55rem .85rem}
+.nav__login:hover{color:var(--accent)}
+.nav__menu{display:none;background:none;border:none;cursor:pointer;padding:.6rem;color:var(--ink)}
+.nav__login-m,.nav__cta-m{display:none}
+.nav .btn--primary{background:var(--blue-500)}
+.nav .btn--primary:hover{background:var(--blue-700)}
+/* mega menu — Produk & Layanan */
+.nav__item--mega{position:relative;display:flex;align-items:center}
+.nav__mega-trigger{display:inline-flex;align-items:center;gap:5px}
+.nav__mega-trigger::after{content:none!important}
+.nav__mega-trigger svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.nav__item--mega:hover .nav__mega-trigger{color:var(--ink)}
+.nav__item--mega:hover .nav__mega-trigger svg{transform:rotate(180deg)}
+.nav__mega{position:absolute;top:100%;left:-22px;padding-top:16px;z-index:60;opacity:0;visibility:hidden;transform:translateY(8px);pointer-events:none;transition:opacity .22s var(--ease),transform .22s var(--ease),visibility .22s linear .22s}
+.nav__item--mega:hover .nav__mega{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto;transition-delay:0s}
+.nav__mega-inner{width:600px;background:var(--paper);border:1px solid var(--rule);border-radius:var(--r-lg);box-shadow:var(--sh-lg);padding:12px;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.nav__mega-inner a{display:flex;align-items:flex-start;gap:12px;padding:11px 12px;border-radius:var(--r-md);transition:background-color .15s var(--ease)}
+.nav__mega-inner a::after{content:none!important}
+.nav__mega-inner a:hover{background:var(--accent-soft);color:var(--ink)}
+.mm__ic{width:40px;height:40px;border-radius:11px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.mm__ic svg{width:21px;height:21px}
+.mm__tx b{display:block;font-family:var(--fd);font-weight:700;font-size:var(--t-sm);color:var(--ink);line-height:1.2}
+.mm__tx>span{font-size:.76rem;color:var(--muted);line-height:1.4}
+/* hero — split: copy left + dashboard mockup right */
+.hero{position:relative;padding-block:clamp(2.5rem,5vw,4rem) clamp(3rem,6vw,5rem);overflow:clip}
+.hero__bg{position:absolute;inset:-10% -5% 0;z-index:-1;overflow:hidden}
+.hero__bg span{position:absolute;border-radius:50%;filter:blur(80px)}
+.hero__bg .b1{width:520px;height:500px;top:20px;left:-140px;background:radial-gradient(circle,rgba(37,170,225,.26),transparent 68%)}
+.hero__bg .b2{width:560px;height:520px;top:-40px;right:-140px;background:radial-gradient(circle,rgba(105,201,240,.30),transparent 70%)}
+.hero__bg .b3{width:420px;height:380px;top:220px;left:44%;background:radial-gradient(circle,rgba(243,236,25,.18),transparent 72%)}
+.hero__bg .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,120,190,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(37,120,190,.09) 1px,transparent 1px);background-size:54px 54px;-webkit-mask-image:radial-gradient(120% 80% at 70% 0%,#000 30%,transparent 76%);mask-image:radial-gradient(120% 80% at 70% 0%,#000 30%,transparent 76%)}
+.hero__split{display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,1fr);gap:clamp(2rem,4vw,4rem);align-items:center}
+.hero__copy{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-lg)}
+.hero__copy h1{font-size:clamp(2.2rem, 2.4vw + 0.8rem, 3.25rem);font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.hero__copy h1 .mark{position:relative;white-space:nowrap}
+.hero__copy h1 .mark::after{content:"";position:absolute;left:-3%;right:-3%;bottom:.06em;height:.32em;z-index:-1;background:var(--highlight);opacity:.65;border-radius:3px}
+.hero__lede{font-size:1.0625rem;color:var(--ink-2);line-height:1.6;max-width:46ch}
+.hero__bullets{display:grid;gap:.65rem}
+.hero__bullets li{display:flex;align-items:center;gap:var(--s-sm);font-weight:600;color:var(--ink)}
+.hero__bullets .ck{width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
+.hero__bullets .ck svg{width:15px;height:15px}
+.hero__cta{display:flex;flex-wrap:wrap;gap:var(--s-sm)}
+.hero__note{display:inline-flex;align-items:center;gap:var(--s-xs);font-size:var(--t-sm);color:var(--muted)}
+.hero__note svg{width:16px;height:16px;color:var(--green)}
+/* hero dashboard mockup */
+.hero__viz{position:relative}
+.hero__viz .glow{position:absolute;inset:-12% -8%;z-index:0;background:radial-gradient(45% 60% at 30% 30%,rgba(37,170,225,.28),transparent 70%),radial-gradient(45% 60% at 80% 70%,rgba(105,201,240,.26),transparent 72%);filter:blur(20px)}
+.dash-frame{position:relative;z-index:1;padding:16px;background:rgba(255,255,255,.5);-webkit-backdrop-filter:blur(12px) saturate(1.3);backdrop-filter:blur(12px) saturate(1.3);border:1px solid rgba(255,255,255,.7);border-radius:var(--r-xl);box-shadow:var(--sh-lg),inset 0 1px 0 rgba(255,255,255,.7)}
+.dash{margin:0;position:relative;text-align:left;background:var(--paper);border:1px solid var(--rule-2);border-radius:var(--r-lg);box-shadow:inset 0 1px 0 rgba(255,255,255,.9);overflow:hidden}
+.dash__top{display:flex;align-items:center;gap:var(--s-sm);padding:var(--s-sm) var(--s-md);border-bottom:1px solid var(--rule-2);background:var(--paper-2)}
+.dash__title{display:flex;align-items:center;gap:8px;font-family:var(--fd);font-weight:800;font-size:var(--t-sm)}
+.dash__title .lm{width:24px;height:24px;border-radius:7px;background:var(--accent);color:#fff;display:grid;place-items:center;flex:none}
+.dash__title .lm svg{width:14px;height:14px}
+.cbadge{font-family:var(--fm);font-size:.66rem;font-weight:600;padding:5px 11px;border-radius:var(--r-pill);display:inline-flex;align-items:center;gap:6px;white-space:nowrap;margin-left:auto}
+.cbadge.live{background:var(--green-soft);color:var(--green)}
+.cbadge.live .d{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pdot 1.8s ease-in-out infinite}
+@keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(23,178,106,.55)}55%{box-shadow:0 0 0 5px rgba(23,178,106,0)}}
+.dash__body{padding:var(--s-md)}
+.dvz__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px}
+.dstat{background:var(--paper-2);border:1px solid var(--rule-2);border-radius:12px;padding:10px 12px}
+.dstat .k{font-family:var(--fm);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.dstat .v{font-family:var(--fd);font-weight:800;font-size:1.3rem;letter-spacing:-.02em;margin-top:3px;line-height:1}
+.dstat .v small{font-size:.66rem;color:var(--green);font-weight:700}
+.dvz__chart{position:relative;height:118px;border:1px solid var(--rule-2);border-radius:12px;background:linear-gradient(180deg,var(--blue-25),#fff);overflow:hidden}
+.dvz__chart .lbl{position:absolute;top:9px;left:12px;font-family:var(--fm);font-size:.62rem;font-weight:600;color:var(--ink-2);z-index:1}
+.dvz__chart svg{position:absolute;inset:0;width:100%;height:100%}
+.dvz__act{margin-top:11px;display:flex;flex-direction:column;gap:7px}
+.dvz__act .row{display:flex;align-items:center;gap:9px;font-size:.74rem;color:var(--ink-2);padding:7px 10px;background:var(--paper-2);border:1px solid var(--rule-2);border-radius:10px}
+.dvz__act .row .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.dvz__act .row .tm{margin-left:auto;font-family:var(--fm);font-size:.64rem;color:var(--muted)}
+/* benefit cards (mode) */
+.feat3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-lg)}
+.mode{position:relative;border-radius:var(--r-card);background:#FAFAFA;padding:var(--s-xl);overflow:hidden;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.mode::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:4.5px;background:linear-gradient(180deg,#09B7DD 7%,#F6C330 34%,#FAFAFA 56%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.mode:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.mode__ic{width:52px;height:52px;border-radius:15px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;margin-bottom:var(--s-md)}
+.mode__ic svg{width:26px;height:26px}
+.mode h3{font-size:var(--t-xl)}
+.mode>p{color:var(--ink-2);margin-top:var(--s-xs);line-height:1.6;font-size:var(--t-sm)}
+/* steps band */
+.stepsband{background:var(--paper-2);border-block:1px solid var(--rule-2)}
+#langkah .head{max-width:none}
+.steps{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg);max-width:920px;margin-inline:auto}
+.steps::before{content:"";position:absolute;top:40px;left:16.6%;right:16.6%;border-top:2.5px dashed var(--blue-200);z-index:0}
+.step{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--s-sm)}
+.step__ic{position:relative;width:80px;height:80px;border-radius:50%;background:linear-gradient(165deg,var(--blue-500),var(--blue-700));color:#fff;display:grid;place-items:center;box-shadow:var(--glow);border:5px solid var(--paper-2)}
+.step__ic>svg{width:34px;height:34px;color:#fff;stroke:#fff}
+.step__ic .n{position:absolute;top:-4px;right:-4px;width:26px;height:26px;border-radius:50%;background:var(--highlight);color:var(--yellow-ink);font-family:var(--fd);font-weight:800;font-size:.85rem;display:grid;place-items:center;border:2.5px solid var(--paper-2)}
+.step b{font-family:var(--fd);font-weight:700;font-size:var(--t-lg);color:var(--ink)}
+.step span{font-size:var(--t-sm);color:var(--ink-2);line-height:1.5;max-width:24ch}
+/* cta — stacked, centered */
+.cta__card{position:relative;overflow:hidden;padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,4vw,3rem);border-radius:var(--r-xl);background:var(--dark);color:var(--on-dark);text-align:center}
+.cta__card::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(45% 80% at 88% 8%,rgba(37,170,225,.5),transparent 65%),radial-gradient(40% 70% at 8% 100%,rgba(105,201,240,.32),transparent 65%),radial-gradient(30% 50% at 50% 0,rgba(243,236,25,.2),transparent 70%)}
+.cta__inner{position:relative;z-index:1;max-width:620px;margin-inline:auto;display:flex;flex-direction:column;align-items:center;gap:var(--s-md)}
+.cta__emblem{width:84px;height:84px;object-fit:contain;display:block}
+.cta__card .eyebrow{background:rgba(255,255,255,.1);color:var(--highlight)}
+.cta__card h2{color:var(--on-dark);font-size:var(--t-4xl)}
+.cta__card p{color:var(--on-dark-2);font-size:var(--t-lg)}
+.cta__btns{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:var(--s-sm);margin-top:var(--s-xs)}
+/* footer — follows index.html */
+.footer{position:relative;background:var(--dark);color:var(--on-dark-2);padding-block:var(--s-2xl) 0;overflow:clip}
+.footer__mast{display:grid;grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:var(--s-xl);padding-bottom:var(--s-xl);border-bottom:1px solid var(--rule-dark)}
+.footer .brand--logo{color:var(--blue-600);font-size:1.5rem}
+.footer__tag{font-size:var(--t-sm);margin-top:var(--s-md);max-width:34ch;line-height:1.6}
+.footer__social{display:flex;gap:var(--s-sm);margin-top:var(--s-lg)}
+.footer__social a{width:38px;height:38px;border-radius:50%;border:1px solid var(--rule-dark);display:grid;place-items:center;color:var(--on-dark-2);transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease)}
+.footer__social a:hover{color:var(--highlight);border-color:var(--highlight)}
+.footer__social svg{width:17px;height:17px}
+.footer__col h4{font-family:var(--fm);font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark);font-weight:500;margin-bottom:var(--s-md)}
+.footer__col a{display:block;font-size:var(--t-sm);padding:.3rem 0;color:var(--on-dark-2);transition:color var(--dur) var(--ease)}
+.footer__col a:hover{color:var(--highlight)}
+.footer__bot{display:flex;flex-wrap:wrap;gap:var(--s-md);justify-content:space-between;align-items:center;padding-block:var(--s-lg);font-size:var(--t-xs);color:var(--muted);position:relative;z-index:1}
+.footer__botr{display:flex;align-items:center;gap:var(--s-lg)}
+.footer__top{display:inline-grid;place-items:center;width:40px;height:40px;flex:none;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--rule-dark);color:var(--on-dark-2);cursor:pointer;transition:color var(--dur) var(--ease),border-color var(--dur) var(--ease),background-color var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.footer__top:hover{color:var(--highlight);border-color:var(--highlight);background:rgba(255,255,255,.1);transform:translateY(-3px)}
+.footer__top svg{width:18px;height:18px}
+.footer__mark{text-align:center;font-family:var(--fd);font-weight:800;font-size:clamp(4rem,22vw,18rem);line-height:.8;letter-spacing:-.04em;background:linear-gradient(180deg,var(--dark-2),transparent);-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:var(--s-lg);pointer-events:none;user-select:none}
+/* responsive */
+@media (max-width:64rem){
+  .hero__split{grid-template-columns:minmax(0,1fr);gap:var(--s-2xl)}
+  .hero__copy{align-items:center;text-align:center}
+  .hero__lede{max-width:52ch}
+  .hero__viz{max-width:520px;margin-inline:auto;width:100%}
+  .feat3{grid-template-columns:minmax(0,1fr)}
+  .footer__mast{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  /* mobile nav — burger + accordion submenu (follows index.html) */
+  .nav__links{display:none;margin-inline:0}
+  .nav__menu{display:inline-flex}
+  .nav.is-open .nav__links{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:var(--s-sm) clamp(1.1rem,4vw,2rem) var(--s-md);background:var(--paper);border-top:1px solid var(--rule-2);box-shadow:0 22px 44px rgba(20,40,80,.14)}
+  .nav.is-open .nav__links > a:not(.btn), .nav.is-open .nav__mega-trigger{padding:.8rem .4rem;font-size:var(--t-md);color:var(--ink)}
+  .nav.is-open .nav__links > a:not(.btn){display:block}
+  .nav.is-open .nav__links > a::after{display:none}
+  .nav.is-open .nav__item--mega{display:block}
+  .nav.is-open .nav__mega-trigger{display:flex;justify-content:space-between;align-items:center;width:100%}
+  .nav.is-open .nav__item--mega.is-expanded .nav__mega-trigger svg{transform:rotate(180deg)}
+  .nav.is-open .nav__mega{display:block;position:static;opacity:1;visibility:visible;transform:none;padding:0;overflow:hidden;max-height:0;transition:max-height .32s var(--ease);pointer-events:auto}
+  .nav.is-open .nav__item--mega.is-expanded .nav__mega{max-height:520px}
+  .nav.is-open .nav__mega-inner{width:auto;grid-template-columns:1fr;box-shadow:none;border:none;background:transparent;padding:2px 0 6px .6rem;gap:0}
+  .nav.is-open .nav__mega-inner a{padding:.55rem .5rem;border-radius:var(--r-sm)}
+  .nav.is-open .nav__login-m{display:block;border-top:1px solid var(--rule-2);margin-top:var(--s-xs);padding-top:.9rem;color:#525252}
+  .nav.is-open .nav__cta-m{display:inline-flex;justify-content:center;margin-top:var(--s-sm);color:var(--accent-ink)}
+}
+@media (max-width:48rem){
+  .steps{grid-template-columns:1fr;max-width:400px;gap:var(--s-xl)}
+  .steps::before{display:none}
+}
+@media (max-width:40rem){
+  .cta__btns{flex-direction:column;align-items:stretch}
+  .cta__btns .btn{width:100%;justify-content:center}
+  .footer__mast{grid-template-columns:1fr 1fr}
+  .footer__mast > :first-child{grid-column:1/-1}
+  .hero__cta .btn{width:100%;justify-content:center}
+  .dvz__stats{grid-template-columns:1fr 1fr}
+  .nav__login{display:none}
+  .nav__actions{margin-inline-start:auto}
+  .nav__actions .btn--primary{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="brand brand--logo" aria-label="KargoOke beranda"><img src="assets/logo.png" alt="KargoOke" /></a>
+    <nav class="nav__links" aria-label="Utama">
+      <a href="index.html">Home</a>
+      <div class="nav__item--mega">
+        <a href="index.html#produk" class="nav__mega-trigger">Produk &amp; Layanan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="nav__mega">
+          <div class="nav__mega-inner">
+            <a href="OkeComply.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="mm__tx"><b>OkeComply</b><span>Deklarasi pabean · CEISA 4.0</span></span></a>
+            <a href="OkeShip.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h12v9H1zM13 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="16.5" cy="19" r="1.8"/></svg></span><span class="mm__tx"><b>OkeShip</b><span>Manajemen pengiriman &amp; forwarding</span></span></a>
+            <a href="OkePort.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M5 12H3a9 9 0 0 0 18 0h-2"/></svg></span><span class="mm__tx"><b>OkePort</b><span>Operasi &amp; jaringan pelabuhan</span></span></a>
+            <a href="OkeDebit.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="mm__tx"><b>OkeDebit</b><span>Wallet &amp; embedded financing</span></span></a>
+            <a href="OkeData.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="mm__tx"><b>OkeData</b><span>Penyimpanan &amp; arsip data</span></span></a>
+            <a href="OkeBiz.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></span><span class="mm__tx"><b>OkeBiz</b><span>Business intelligence &amp; integrasi</span></span></a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#blog">OkeTalks</a>
+      <a href="TentangKami.html">Tentang Kami</a>
+      <a href="index.html#login" class="nav__login-m">Masuk</a>
+      <a href="demo-gratis.html" class="btn btn--primary nav__cta-m">Demo Gratis <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </nav>
+    <div class="nav__actions">
+      <a href="index.html#login" class="nav__login">Masuk</a>
+      <a href="demo-gratis.html" class="btn btn--primary">Demo Gratis <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="nav__menu" aria-label="Buka menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="nav-spacer" id="top"></div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero__bg" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="grid"></span></div>
+  <div class="wrap">
+    <div class="hero__split">
+      <div class="hero__copy">
+        <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l6 3.5-6 3.5z"/></svg>Demo Gratis</span>
+        <h1>Handle logistik lebih <span class="mark">efisien</span> pakai KargoOke.</h1>
+        <p class="hero__lede">Urus logistik manual bikin stres? Saatnya beralih ke KargoOke — platform logistik digital yang mengintegrasikan para pelaku logistik biar prosesnya lebih praktis, hemat biaya, dan waktu.</p>
+        <ul class="hero__bullets">
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>Terintegrasi dengan CEISA 4.0</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>Automasi dokumen kepabeanan</li>
+          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span>Kontrol data &amp; proses logistik mudah</li>
+        </ul>
+        <div class="hero__cta">
+          <a href="registration.html" class="btn btn--primary">Buat Akun Sekarang <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a href="https://wa.me/622140622190?text=Halo%20KargoOke%2C%20saya%20mau%20tanya%20soal%20Demo%20Gratis" class="btn btn--ghost btn--wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 1.67c2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.87c0 4.57-3.72 8.29-8.29 8.29a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.57 3.72-8.29 8.29-8.29zm4.78 10.44c-.06-.11-.24-.18-.5-.31-.26-.13-1.55-.76-1.79-.85-.24-.09-.42-.13-.59.13-.17.26-.67.85-.83 1.02-.15.17-.3.19-.56.06-.26-.13-1.1-.41-2.1-1.3-.78-.69-1.3-1.55-1.46-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.59-1.42-.81-1.94-.21-.51-.43-.44-.59-.45l-.5-.01c-.17 0-.45.06-.68.32-.24.26-.9.88-.9 2.15 0 1.27.92 2.49 1.05 2.66.13.17 1.81 2.77 4.39 3.88.61.26 1.09.42 1.47.54.62.2 1.18.17 1.62.1.49-.07 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24z"/></svg>Tanya CS</a>
+        </div>
+        <span class="hero__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Gratis, tanpa kartu kredit, tanpa komitmen.</span>
+      </div>
+
+      <div class="hero__viz">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="dash-frame">
+          <figure class="dash" aria-label="Pratinjau dashboard KargoOke">
+            <div class="dash__top">
+              <span class="dash__title"><span class="lm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></span>KargoOke · Dashboard</span>
+              <span class="cbadge live"><span class="d"></span>Real-time</span>
+            </div>
+            <div class="dash__body">
+              <div class="dvz__stats">
+                <div class="dstat"><div class="k">Dokumen</div><div class="v">128</div></div>
+                <div class="dstat"><div class="k">Approved</div><div class="v">98<small>%</small></div></div>
+                <div class="dstat"><div class="k">Pending</div><div class="v">4</div></div>
+              </div>
+              <div class="dvz__chart">
+                <span class="lbl">Deklarasi 30 hari</span>
+                <svg viewBox="0 0 300 118" preserveAspectRatio="none" aria-hidden="true">
+                  <defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#33AFE5" stop-opacity=".34"/><stop offset="1" stop-color="#33AFE5" stop-opacity="0"/></linearGradient></defs>
+                  <path d="M0 92 L37 80 L75 86 L112 60 L150 68 L187 44 L225 52 L262 28 L300 36 L300 118 L0 118 Z" fill="url(#dg)"/>
+                  <path d="M0 92 L37 80 L75 86 L112 60 L150 68 L187 44 L225 52 L262 28 L300 36" fill="none" stroke="#1D8CBB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="dvz__act">
+                <div class="row"><span class="dot" style="background:var(--green)"></span>SPPB terbit — PIB-2024-0231<span class="tm">09:14</span></div>
+                <div class="row"><span class="dot" style="background:var(--highlight)"></span>NPD diterima — Impor elektronik<span class="tm">09:02</span></div>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Kenapa coba -->
+<section class="section" id="kenapa">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Kenapa coba dulu?</span>
+      <h2>Coba tanpa risiko, <span class="accent">yakin baru lanjut</span>.</h2>
+      <p>Rasakan sendiri gimana KargoOke bikin proses logistik jadi lebih ringan — sebelum kamu memutuskan.</p>
+    </div>
+    <div class="feat3">
+      <article class="mode">
+        <div class="mode__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Lihat langsung cara kerja sistem</h3>
+        <p>Jelajahi dashboard dan alur kerja KargoOke persis seperti pengguna sungguhan — bukan sekadar slide presentasi.</p>
+      </article>
+      <article class="mode">
+        <div class="mode__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Eksplor fitur unggulan tanpa risiko</h3>
+        <p>Coba fitur inti dari deklarasi sampai monitoring — tanpa komitmen, tanpa kartu kredit, kapan pun kamu siap.</p>
+      </article>
+      <article class="mode">
+        <div class="mode__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Diskusi masalah logistik dengan tim</h3>
+        <p>Ngobrol langsung dengan tim KargoOke untuk cari solusi yang paling pas buat kebutuhan bisnismu.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Langkah -->
+<section class="section stepsband" id="langkah">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Cepat &amp; gampang</span>
+      <h2>Demo Gratis dalam <span class="accent">3 langkah</span>.</h2>
+      <p>Dari daftar sampai eksplor, cuma butuh beberapa menit.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg><span class="n">1</span></span>
+        <b>Buat akun</b>
+        <span>Isi data perusahaan &amp; administrator dalam satu form singkat.</span>
+      </div>
+      <div class="step">
+        <span class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg><span class="n">2</span></span>
+        <b>Verifikasi email</b>
+        <span>Klik link konfirmasi yang kami kirim ke email kamu.</span>
+      </div>
+      <div class="step">
+        <span class="step__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 8-10c1.5 1.5 3 3.5 3 5a22 22 0 0 1-8 8zM15 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg><span class="n">3</span></span>
+        <b>Nikmati Demo Gratis</b>
+        <span>Login, eksplor semua fitur, dan mulai rasakan bedanya.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section" id="mulai">
+  <div class="wrap">
+    <div class="cta__card">
+      <div class="cta__inner">
+        <img class="cta__emblem" src="assets/logo-kargooke-smile.png" alt="KargoOke" width="216" height="216"/>
+        <span class="eyebrow">Mulai</span>
+        <h2>Siap coba Demo Gratis?</h2>
+        <p>Buat akun sekarang — gratis, cepat, dan tanpa komitmen. Logistik lebih menyenangkan dimulai hari ini.</p>
+        <div class="cta__btns">
+          <a href="registration.html" class="btn btn--primary">Buat Akun Sekarang <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a href="https://wa.me/622140622190?text=Halo%20KargoOke%2C%20saya%20mau%20tanya%20soal%20Demo%20Gratis" class="btn btn--on-dark btn--wa"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 1.67c2.21 0 4.28.86 5.84 2.42a8.2 8.2 0 0 1 2.42 5.87c0 4.57-3.72 8.29-8.29 8.29a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.39c0-4.57 3.72-8.29 8.29-8.29zm4.78 10.44c-.06-.11-.24-.18-.5-.31-.26-.13-1.55-.76-1.79-.85-.24-.09-.42-.13-.59.13-.17.26-.67.85-.83 1.02-.15.17-.3.19-.56.06-.26-.13-1.1-.41-2.1-1.3-.78-.69-1.3-1.55-1.46-1.81-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.59-1.42-.81-1.94-.21-.51-.43-.44-.59-.45l-.5-.01c-.17 0-.45.06-.68.32-.24.26-.9.88-.9 2.15 0 1.27.92 2.49 1.05 2.66.13.17 1.81 2.77 4.39 3.88.61.26 1.09.42 1.47.54.62.2 1.18.17 1.62.1.49-.07 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24z"/></svg>Tanya Customer Service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__mast">
+      <div>
+        <a href="index.html" class="brand brand--logo" aria-label="KargoOke beranda"><img src="assets/logo-white.png" alt="KargoOke" /></a>
+        <p class="footer__tag">Platform kepabeanan ber-AI — solusi pintar manajemen data kepabeanan elektronik untuk bisnis logistik Indonesia.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2.05 1.4-2.05 2.8V21h-4z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 3h3l-7 8 8 10h-6l-5-6-5 6H3l7-9L2 3h6l4 5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Produk</h4><a href="OkeComply.html">OkeCOMPLY</a><a href="OkeShip.html">OkeSHIP</a><a href="OkePort.html">OkePORT</a><a href="OkeData.html">OkeDATA</a><a href="OkeBiz.html">OkeBIZ</a></div>
+      <div class="footer__col"><h4>Perusahaan</h4><a href="TentangKami.html">Tentang Kami</a><a href="index.html#blog">OkeTalk</a><a href="TentangKami.html#kontak">Hubungi Kami</a></div>
+      <div class="footer__col"><h4>Akun</h4><a href="registration.html">Daftar</a><a href="index.html#login">Masuk Portal B2B</a><a href="demo-gratis.html">Demo Gratis</a></div>
+    </div>
+    <div class="footer__bot">
+      <span>© 2026 KargoOke — PT Solusi Oke Logistik. All rights reserved.</span>
+      <div class="footer__botr">
+        <span>Berizin &amp; terdaftar — Kementerian Perdagangan RI</span>
+        <button class="footer__top" type="button" aria-label="Kembali ke atas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="footer__mark" aria-hidden="true">KargoOke</div>
+  </div>
+</footer>
+
+<script>
+// mobile burger menu + product submenu accordion (follows index.html)
+(function(){
+  var nav = document.querySelector('.nav');
+  var burger = nav && nav.querySelector('.nav__menu');
+  if(!burger) return;
+  var mega = nav.querySelector('.nav__item--mega');
+  var trigger = mega && mega.querySelector('.nav__mega-trigger');
+  function closeMenu(){ nav.classList.remove('is-open'); if(mega) mega.classList.remove('is-expanded'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    if(!open && mega) mega.classList.remove('is-expanded');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  if(trigger){
+    trigger.addEventListener('click', function(e){
+      if(window.matchMedia('(max-width: 64rem)').matches){
+        e.preventDefault();
+        var exp = mega.classList.toggle('is-expanded');
+        trigger.setAttribute('aria-expanded', exp ? 'true' : 'false');
+      }
+    });
+  }
+  nav.querySelectorAll('.nav__links a:not(.nav__mega-trigger)').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+})();
+// back to top
+(function(){
+  var btn = document.querySelector('.footer__top');
+  if(btn) btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>

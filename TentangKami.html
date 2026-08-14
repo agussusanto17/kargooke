@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tentang Kami — KargoOke</title>
+<meta name="description" content="KargoOke — platform digital logistik all-in-one dari PT Solusi Oke Logistik. Menghubungkan seluruh stakeholder logistik & perbankan, terhubung langsung ke CEISA 4.0 dan INSW." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+/* design tokens (inlined for self-contained deploy — no FOUC) */
+/* KargoOke — design tokens */
+:root {
+  /* — Paper / surfaces — */
+  --color-paper:      oklch(99% 0.004 250);
+  --color-paper-2:    oklch(97.8% 0.006 250);
+  --color-paper-3:    oklch(95.5% 0.009 252);
+  --color-paper-ink:  oklch(19% 0.05 264);   /* dark panel surface */
+  --color-paper-ink2: oklch(24% 0.055 264);
+
+  /* — Ink / text — */
+  --color-ink:        oklch(23% 0.05 264);
+  --color-ink-2:      oklch(42% 0.04 262);
+  --color-muted:      oklch(55% 0.03 260);
+  --color-on-dark:    oklch(98% 0.006 250);
+  --color-on-dark-2:  oklch(80% 0.025 250);
+
+  /* — Rules — */
+  --color-rule:       oklch(90% 0.014 250);
+  --color-rule-2:     oklch(94% 0.01 250);
+  --color-rule-dark:  oklch(36% 0.04 260);
+
+  /* — Accent (brand blue #0B5FBF) — */
+  --color-accent:        oklch(50% 0.17 257);
+  --color-accent-strong: oklch(43% 0.16 258);
+  --color-accent-soft:   oklch(95% 0.04 252);
+  --color-accent-wash:   oklch(97% 0.02 252);
+  --color-accent-ink:    oklch(99% 0.004 250);
+
+  /* — Cyan (AI/future glow partner) — */
+  --color-cyan:       oklch(72% 0.13 220);
+  --color-cyan-soft:  oklch(94% 0.05 215);
+
+  /* — Highlight (brand yellow #FFC629) — used sparingly — */
+  --color-highlight:     oklch(84% 0.16 88);
+  --color-highlight-ink: oklch(28% 0.05 80);
+
+  /* — Focus — */
+  --color-focus:      oklch(54% 0.21 257);
+
+  /* — Mesh / glow palette — */
+  --mesh-blue:    oklch(60% 0.19 257 / 0.40);
+  --mesh-cyan:    oklch(78% 0.14 215 / 0.34);
+  --mesh-violet:  oklch(66% 0.14 285 / 0.20);
+  --mesh-soft:    oklch(92% 0.05 245 / 0.55);
+  --glow-accent:  0 0 0 1px oklch(60% 0.17 257 / 0.25), 0 18px 60px oklch(55% 0.18 257 / 0.30);
+  --glow-cyan:    0 0 48px oklch(72% 0.14 215 / 0.45);
+
+  /* — Fonts — */
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body:    "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono:    "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* — Type scale (bumped for readability) — */
+  --text-display:   clamp(2.8rem, 5.2vw + 0.6rem, 4.75rem);
+  --text-display-s: clamp(2.2rem, 3.8vw + 0.5rem, 3.4rem);
+  --text-4xl: clamp(1.85rem, 2.4vw + 0.6rem, 2.7rem);
+  --text-3xl: clamp(1.5rem, 1.5vw + 0.7rem, 2rem);
+  --text-2xl: 1.4rem;
+  --text-xl:  1.2rem;
+  --text-lg:  1.1rem;
+  --text-md:  1.0625rem;   /* 17px base */
+  --text-sm:  0.9375rem;   /* 15px */
+  --text-xs:  0.8125rem;   /* 13px */
+
+  /* — Spacing (4pt) — */
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 9rem;
+
+  /* — Radius — */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  /* — Motion — */
+  --dur-short: 140ms;
+  --dur-mid:   260ms;
+  --dur-long:  560ms;
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* — Elevation — */
+  --shadow-sm: 0 1px 2px oklch(50% 0.08 257 / 0.06), 0 2px 6px oklch(50% 0.08 257 / 0.05);
+  --shadow-md: 0 10px 30px oklch(50% 0.1 257 / 0.10), 0 2px 8px oklch(50% 0.08 257 / 0.06);
+  --shadow-lg: 0 30px 70px oklch(45% 0.12 257 / 0.18), 0 8px 22px oklch(45% 0.1 257 / 0.08);
+
+  /* — z-index scale — */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-overlay: 1000;
+}
+</style>
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font-body); font-size: var(--text-md); line-height: 1.7; color: var(--color-ink); background: var(--color-paper); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 0; color: var(--color-ink); overflow-wrap: anywhere; min-width: 0; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+ul { margin: 0; padding: 0; list-style: none; }
+img, svg { display: block; max-width: 100%; }
+:focus-visible { outline: 2.5px solid var(--color-focus); outline-offset: 3px; border-radius: 4px; }
+
+.wrap { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 0; }
+@media (max-width: 84rem) { .wrap { padding-inline: clamp(1.1rem, 4vw, 2rem); } }
+.accent { color: var(--color-accent); }
+
+/* ── pill eyebrow ── */
+.pill-eyebrow { display: inline-flex; align-items: center; gap: var(--space-xs); padding: 0.4rem 0.85rem; border-radius: var(--radius-pill);
+  background: var(--color-accent-soft); color: var(--color-accent-strong); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+.pill-eyebrow svg { width: 14px; height: 14px; }
+
+/* ── centered section head ── */
+.head { max-width: 48ch; margin: 0 auto var(--space-2xl); text-align: center; display: flex; flex-direction: column; align-items: center; gap: var(--space-md); }
+.head h2 { font-size: var(--text-4xl); }
+.head p { color: var(--color-ink-2); font-size: var(--text-lg); line-height: 1.6; max-width: 56ch; }
+.head--left { text-align: left; align-items: flex-start; margin-inline: 0; max-width: 60rem; }
+
+/* ── buttons ── */
+.btn { display: inline-flex; align-items: center; gap: var(--space-xs); white-space: nowrap; font-family: var(--font-body); font-weight: 600; font-size: var(--text-md); line-height: 1;
+  padding: 0.9rem 1.1rem 0.9rem 1.5rem; border-radius: var(--radius-pill); border: 1px solid transparent; cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out), border-color var(--dur-short) var(--ease-out); }
+.btn .ico { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; flex: none; }
+.btn .ico svg { width: 15px; height: 15px; }
+.btn--primary { background: var(--color-accent); color: var(--color-accent-ink); box-shadow: var(--glow-accent); }
+.btn--primary .ico { background: oklch(100% 0 0 / 0.18); }
+.btn--primary:hover { background: var(--color-accent-strong); transform: translateY(-2px); box-shadow: 0 0 0 1px oklch(60% 0.17 257 / 0.3), 0 22px 70px oklch(55% 0.18 257 / 0.42); }
+.btn--primary:active { transform: translateY(0); }
+.btn--ghost { background: oklch(100% 0 0 / 0.7); color: var(--color-ink); border-color: var(--color-rule); padding: 0.9rem 1.5rem; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+.btn--ghost:hover { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-2px); }
+.btn--on-dark { background: oklch(100% 0 0 / 0.08); color: var(--color-on-dark); border-color: var(--color-rule-dark); padding: 0.9rem 1.5rem; }
+.btn--on-dark:hover { border-color: var(--color-highlight); color: var(--color-highlight); }
+
+/* ───────── Nav ───────── */
+.nav-spacer { height: 74px; }
+.nav { position: fixed; inset-block-start: 0; inset-inline: 0; z-index: var(--z-nav);
+  background: oklch(99.5% 0.003 250 / 0.82); -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
+  border-bottom: 1px solid var(--color-rule-2); }
+.nav__inner { width: 100%; max-width: 1280px; margin-inline: auto; display: flex; align-items: center; gap: var(--space-lg); padding: 0.75rem clamp(1.1rem, 4vw, 2.5rem); }
+.brand { display: inline-flex; align-items: center; gap: 2px; font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; letter-spacing: -0.03em; }
+.nav__links { display: flex; gap: var(--space-lg); margin-inline-start: var(--space-md); margin-inline-end: auto; }
+.nav__links a { position: relative; font-size: var(--text-sm); color: var(--color-ink-2); font-weight: 500; padding: 0.4rem 0; transition: color var(--dur-short) var(--ease-out); }
+.nav__links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -2px; height: 2px; background: var(--color-accent); border-radius: 2px; transition: right var(--dur-mid) var(--ease-out); }
+.nav__links a:hover { color: var(--color-ink); } .nav__links a:hover::after { right: 0; }
+.nav__actions { display: flex; align-items: center; gap: var(--space-sm); }
+.nav__login { font-size: var(--text-sm); font-weight: 600; color: var(--color-ink); padding: 0.55rem 0.85rem; } .nav__login:hover { color: var(--color-accent); }
+.nav__menu { display: none; background: none; border: none; cursor: pointer; padding: 0.6rem; color: var(--color-ink); }
+.nav__login-m, .nav__cta-m { display: none; }
+
+/* ── Brand sky theme — nav + hero, matches Figma 27:57 ── */
+.nav, .about-hero {
+  --color-accent: #25AAE1; --color-accent-strong: #1D8CBB; --color-accent-soft: #DCF1FF; --color-accent-wash: #F3FBFE; --color-accent-ink: #FAFCFE;
+  --color-cyan: #33AFE5; --color-cyan-soft: #CBEDFB; --color-highlight: #EAE319;
+  --glow-accent: 0 0 0 1px rgb(37 170 225 / 0.25), 0 16px 44px rgb(37 170 225 / 0.30);
+  --color-focus: #1D8CBB;
+}
+.nav .btn--primary { background: #33AFE5; }
+.nav .btn--primary:hover, .about-hero .btn--primary:hover { background: #1D8CBB; box-shadow: 0 0 0 1px rgb(37 170 225 / 0.30), 0 22px 70px rgb(37 170 225 / 0.42); }
+.nav__links a.is-active { color: var(--color-accent); font-weight: 600; }
+.nav__links a.is-active::after { content: none; }
+/* mega menu — Produk & Layanan */
+.nav__item--mega { position: relative; display: flex; align-items: center; }
+.nav__mega-trigger { display: inline-flex; align-items: center; gap: 5px; }
+.nav__mega-trigger::after { content: none !important; }
+.nav__mega-trigger svg { width: 15px; height: 15px; transition: transform 0.25s var(--ease-out); }
+.nav__item--mega:hover .nav__mega-trigger { color: var(--color-ink); }
+.nav__item--mega:hover .nav__mega-trigger svg { transform: rotate(180deg); }
+.nav__mega { position: absolute; top: 100%; left: -22px; padding-top: 16px; z-index: 60;
+  opacity: 0; visibility: hidden; transform: translateY(8px); pointer-events: none;
+  transition: opacity 0.22s var(--ease-out), transform 0.22s var(--ease-out), visibility 0.22s linear 0.22s; }
+.nav__item--mega:hover .nav__mega { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; transition-delay: 0s; }
+.nav__mega-inner { width: 600px; background: var(--color-paper); border: 1px solid var(--color-rule); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg); padding: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.nav__mega-inner a { display: flex; align-items: flex-start; gap: 12px; padding: 11px 12px; border-radius: var(--radius-md); transition: background-color 0.15s var(--ease-out); }
+.nav__mega-inner a::after { content: none !important; }
+.nav__mega-inner a:hover { background: var(--color-accent-soft); color: var(--color-ink); }
+.mm__ic { width: 40px; height: 40px; border-radius: 11px; background: var(--color-accent-soft); color: var(--color-accent); display: grid; place-items: center; flex: none; }
+.mm__ic svg { width: 21px; height: 21px; }
+.mm__tx b { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); color: var(--color-ink); line-height: 1.2; }
+.mm__tx > span { font-size: 0.76rem; color: var(--color-muted); line-height: 1.4; }
+.nav .nav__login { color: #525252; }
+/* logo — blue wordmark + yellow smile */
+.brand--logo { position: relative; color: #25AAE1; font-weight: 800; }
+.brand--logo .smilearc { position: absolute; left: 50%; bottom: -7px; width: 38px; height: 13px; transform: translateX(-54%); }
+.brand--logo img { display: block; height: 30px; width: auto; }
+.footer .brand--logo img { height: 32px; }
+
+/* ───────── About hero (editorial split — brand emblem) ───────── */
+.about-hero { position: relative; overflow: clip; padding-block: clamp(2.2rem, 4.5vw, 3.6rem) clamp(2.8rem, 5.5vw, 4.6rem);
+  background: radial-gradient(85% 70% at 88% -6%, #E7F5FE 0%, var(--color-paper) 55%); }
+.about-hero__decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.about-hero__decor span { position: absolute; border-radius: 50%; filter: blur(90px); }
+.about-hero__decor .g1 { width: 540px; height: 500px; left: -16%; top: 8%; background: radial-gradient(circle, rgb(37 170 225 / 0.28), transparent 68%); }
+.about-hero__decor .g2 { width: 560px; height: 520px; right: -14%; top: -24%; background: radial-gradient(circle, rgb(255 204 79 / 0.40), transparent 68%); }
+.about-hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.about-hero__copy { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-lg); }
+.about-hero .pill-eyebrow { color: #25AAE1; }
+.about-hero h1 { font-size: clamp(2.2rem, 3.2vw + 0.7rem, 3.2rem); font-weight: 700; letter-spacing: -0.03em; text-align: left; }
+.about-hero h1 .accent { color: #33AFE5; }
+.about-hero h1 .mark { position: relative; white-space: nowrap; }
+.about-hero h1 .mark::after { content: ""; position: absolute; left: -3%; right: -3%; bottom: 0.05em; height: 0.32em; z-index: -1; background: #F3EC19; border-radius: 3px; }
+.about-hero__lede { font-size: var(--text-lg); color: var(--color-ink-2); line-height: 1.65; max-width: 42ch; }
+.about-hero__sign { display: inline-flex; align-items: center; gap: var(--space-sm); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-muted); }
+.about-hero__sign::before { content: ""; width: 26px; height: 2px; border-radius: 2px; background: #F3EC19; }
+.about-hero__cta { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+.about-hero__stats { display: flex; flex-wrap: wrap; margin-top: var(--space-xs); border: 1px solid var(--color-rule-2); border-radius: var(--radius-lg); background: var(--color-paper); box-shadow: var(--shadow-sm); overflow: hidden; }
+.about-hero__stat { flex: 1; min-width: 116px; padding: var(--space-md) var(--space-lg); border-left: 1px solid var(--color-rule-2); }
+.about-hero__stat:first-child { border-left: none; }
+.about-hero__stat b { display: block; font-family: var(--font-display); font-weight: 700; font-size: var(--text-2xl); color: #1D8CBB; letter-spacing: -0.02em; line-height: 1.1; }
+.about-hero__stat span { font-size: var(--text-xs); color: var(--color-muted); line-height: 1.35; }
+
+/* brand emblem card — the "oO" smiley + yellow smile, clouds & plus (Where Logistics Become Fun) */
+.emblem-wrap { position: relative; }
+.emblem { position: relative; aspect-ratio: 1 / 1; border-radius: 34px; overflow: hidden; display: grid; place-items: center;
+  background: linear-gradient(158deg, #45B6E8 0%, #1D8CBB 100%); box-shadow: 0 34px 80px rgb(29 140 187 / 0.36); }
+.emblem__deco { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.emblem__cloud { position: absolute; background: rgb(255 255 255 / 0.92); border-radius: 100px; box-shadow: 0 6px 18px rgb(8 50 122 / 0.12); }
+.emblem__cloud::before, .emblem__cloud::after { content: ""; position: absolute; bottom: 0; background: inherit; border-radius: 50%; }
+.emblem__cloud.c1 { width: 92px; height: 26px; top: 15%; left: 12%; }
+.emblem__cloud.c1::before { width: 34px; height: 34px; left: 14px; bottom: 4px; } .emblem__cloud.c1::after { width: 26px; height: 26px; right: 16px; bottom: 6px; }
+.emblem__cloud.c2 { width: 70px; height: 20px; bottom: 16%; right: 12%; opacity: 0.85; }
+.emblem__cloud.c2::before { width: 26px; height: 26px; left: 10px; bottom: 3px; } .emblem__cloud.c2::after { width: 20px; height: 20px; right: 12px; bottom: 4px; }
+.emblem__arc { position: absolute; border-radius: 50%; border: 10px solid transparent; }
+.emblem__arc.a1 { width: 120px; height: 120px; top: -46px; right: 40px; border-color: #F3EC19; clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); }
+.emblem__arc.a2 { width: 90px; height: 90px; bottom: -34px; left: 26px; border-color: rgb(255 255 255 / 0.45); clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%); }
+.emblem__plus { position: absolute; width: 30px; height: 30px; }
+.emblem__plus::before, .emblem__plus::after { content: ""; position: absolute; background: currentColor; border-radius: 3px; }
+.emblem__plus::before { left: 50%; top: 0; transform: translateX(-50%); width: 8px; height: 100%; }
+.emblem__plus::after { top: 50%; left: 0; transform: translateY(-50%); height: 8px; width: 100%; }
+.emblem__plus.p1 { top: 20%; right: 15%; color: #F3EC19; }
+.emblem__plus.p2 { bottom: 22%; left: 14%; color: rgb(255 255 255 / 0.55); width: 22px; height: 22px; }
+.emblem__face { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: clamp(16px, 3vw, 26px); }
+.emblem__eyes { display: flex; align-items: center; gap: clamp(10px, 2vw, 16px); }
+.emblem__eyes i { display: block; border-radius: 50%; }
+.emblem__eyes .o-dot { width: clamp(26px, 5vw, 40px); height: clamp(26px, 5vw, 40px); background: #F3EC19; box-shadow: 0 6px 16px rgb(243 236 25 / 0.4); }
+.emblem__eyes .o-ring { width: clamp(50px, 9vw, 72px); height: clamp(50px, 9vw, 72px); border: clamp(9px, 1.8vw, 13px) solid #FAFCFE; background: transparent; box-sizing: border-box; }
+.emblem__smile { width: clamp(120px, 22vw, 168px); height: auto; }
+.emblem__tag { position: relative; z-index: 2; margin-top: clamp(14px, 3vw, 22px); font-family: var(--font-display); font-weight: 700; font-size: clamp(1.05rem, 2vw, 1.35rem); color: #FAFCFE; text-align: center; letter-spacing: -0.01em; }
+.emblem__tag span { color: #F3EC19; }
+/* floating cert badge over emblem */
+.emblem__badge { position: absolute; z-index: 3; bottom: 18px; right: -14px; display: flex; align-items: center; gap: 10px; padding: 0.7rem 1rem;
+  background: var(--color-paper); border-radius: var(--radius-md); box-shadow: 0 18px 40px rgb(8 50 122 / 0.22); }
+.emblem__badge .eb-ic { width: 34px; height: 34px; border-radius: 10px; background: #DCF1FF; color: #1D8CBB; display: grid; place-items: center; flex: none; }
+.emblem__badge .eb-ic svg { width: 18px; height: 18px; }
+.emblem__badge b { display: block; font-family: var(--font-display); font-size: var(--text-sm); color: var(--color-ink); line-height: 1.15; }
+.emblem__badge span { font-size: 0.68rem; color: var(--color-muted); }
+
+/* ───────── Section base ───────── */
+.section { padding-block: var(--space-3xl); }
+.section--tint { background: var(--color-paper-2); border-block: 1px solid var(--color-rule-2); }
+
+/* ───────── Stats / Indonesia potential ───────── */
+.stats { --color-accent: #25AAE1; --color-accent-strong: #1D8CBB; --color-accent-soft: #DCF1FF; }
+.stats .head .accent { color: #33AFE5; }
+.stats .pill-eyebrow { color: #33AFE5; }
+.stats__grid { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.4fr); gap: clamp(1.6rem, 3.5vw, 3rem); align-items: start; }
+.stat-call { display: flex; flex-direction: column; gap: var(--space-md); padding: var(--space-xl); border-radius: var(--radius-lg);
+  background: linear-gradient(165deg, #33AFE5, #1D8CBB); color: #FAFCFE; box-shadow: var(--shadow-md); position: relative; overflow: hidden; }
+.stat-call::after { content: ""; position: absolute; right: -40px; bottom: -50px; width: 190px; height: 190px; border-radius: 50%; background: rgb(243 236 25 / 0.20); }
+.stat-call__num { font-family: var(--font-display); font-weight: 700; font-size: clamp(3.2rem, 6vw, 4.4rem); line-height: 0.95; letter-spacing: -0.03em; position: relative; z-index: 1; }
+.stat-call__num sub { font-size: 0.32em; font-weight: 600; vertical-align: baseline; margin-left: 4px; }
+.stat-call__lbl { font-size: var(--text-md); line-height: 1.55; color: rgb(250 252 254 / 0.92); position: relative; z-index: 1; }
+.stat-call__tag { margin-top: auto; display: inline-flex; align-items: center; gap: var(--space-xs); font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: #F3EC19; position: relative; z-index: 1; }
+.stat-call__tag svg { width: 15px; height: 15px; }
+
+.lpi { border: 1px solid var(--color-rule-2); border-radius: var(--radius-lg); background: var(--color-paper); overflow: hidden; box-shadow: var(--shadow-sm); }
+.lpi__cap { padding: var(--space-md) var(--space-lg); font-family: var(--font-display); font-weight: 700; font-size: var(--text-md); color: #1D8CBB; border-bottom: 1px solid var(--color-rule-2); }
+.lpi__scroll { overflow-x: auto; }
+.lpi table { width: 100%; border-collapse: collapse; font-size: var(--text-xs); min-width: 620px; }
+.lpi th, .lpi td { padding: 0.62rem 0.7rem; text-align: center; white-space: nowrap; }
+.lpi thead th { background: #1D8CBB; color: #FAFCFE; font-family: var(--font-mono); font-weight: 600; font-size: 0.68rem; letter-spacing: 0.02em; }
+.lpi thead th:first-child, .lpi tbody th { text-align: left; }
+.lpi tbody th { font-weight: 600; color: var(--color-ink); background: var(--color-paper-2); font-size: var(--text-xs); }
+.lpi tbody td { color: var(--color-ink-2); font-variant-numeric: tabular-nums; border-top: 1px solid var(--color-rule-2); }
+.lpi tbody th { border-top: 1px solid var(--color-rule-2); }
+.lpi td.ind { color: var(--color-ink); font-weight: 700; background: rgb(37 170 225 / 0.06); }
+.lpi tr.hot th, .lpi tr.hot td { background: #FFF7C2; }
+.lpi tr.hot td.ind { background: #F3EC19; color: #3A3600; }
+.lpi tr.hot th { color: #1D8CBB; }
+.lpi__note { display: flex; align-items: flex-start; gap: var(--space-sm); padding: var(--space-md) var(--space-lg); background: linear-gradient(180deg, var(--color-paper-2), var(--color-paper)); border-top: 1px solid var(--color-rule-2); font-size: var(--text-sm); color: var(--color-ink-2); line-height: 1.5; }
+.lpi__note svg { width: 18px; height: 18px; color: #33AFE5; flex: none; margin-top: 2px; }
+
+/* ───────── Seamless / customs ───────── */
+.seamless { --color-accent: #25AAE1; --color-accent-strong: #1D8CBB; --color-accent-soft: #DCF1FF; }
+.seamless .head .accent, .seamless .pill-eyebrow { color: #33AFE5; }
+.seam__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg); }
+.seam { position: relative; display: flex; flex-direction: column; gap: var(--space-md); padding: clamp(1.6rem, 3vw, 2.4rem); border-radius: var(--radius-card); overflow: hidden;
+  background: #FAFAFA; transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out); }
+.seam::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 4.5px; background: linear-gradient(180deg, #09B7DD 7%, #F6C330 34%, #FAFAFA 56%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
+.seam:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.seam__ic { width: 54px; height: 54px; border-radius: 15px; background: var(--color-accent-soft); color: #25AAE1; display: grid; place-items: center; }
+.seam__ic svg { width: 27px; height: 27px; }
+.seam h3 { font-size: var(--text-2xl); }
+.seam__list { display: flex; flex-direction: column; gap: var(--space-sm); }
+.seam__list li { display: flex; gap: var(--space-sm); font-size: var(--text-md); color: var(--color-ink-2); line-height: 1.55; }
+.seam__list li svg { width: 22px; height: 22px; color: #25AAE1; flex: none; margin-top: 1px; }
+.badges { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: auto; padding-top: var(--space-sm); }
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 0.35rem 0.8rem; border-radius: var(--radius-pill); background: var(--color-accent-soft); color: #1D8CBB; font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.02em; }
+.badge svg { width: 13px; height: 13px; }
+
+/* ───────── Products grid ───────── */
+.prods { --color-accent: #0C5FC1; --color-accent-strong: #0F3F9C; --color-accent-soft: #DCF1FF; }
+.prods .head .accent, .prods .pill-eyebrow { color: #33AFE5; }
+.prod__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); }
+.prod { display: flex; flex-direction: column; gap: var(--space-sm); padding: var(--space-lg); border-radius: var(--radius-lg);
+  background: #FAFCFE; border: 1px solid #D7DFE7; transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out), border-color var(--dur-short) var(--ease-out); }
+.prod:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: #33AFE5; }
+.prod__ic { width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(160deg, #33AFE5, #0C5FC1); color: #FAFCFE; display: grid; place-items: center; box-shadow: 0 8px 20px rgb(12 95 193 / 0.24); }
+.prod__ic svg { width: 24px; height: 24px; }
+.prod h3 { font-size: var(--text-lg); color: #0C5FC1; }
+.prod p { font-size: var(--text-sm); color: var(--color-ink-2); line-height: 1.5; }
+.prod__link { margin-top: auto; padding-top: var(--space-xs); display: inline-flex; align-items: center; gap: 5px; font-size: var(--text-sm); font-weight: 600; color: #33AFE5; }
+.prod__link svg { width: 16px; height: 16px; transition: transform var(--dur-short) var(--ease-out); }
+.prod:hover .prod__link svg { transform: translateX(3px); }
+
+/* ───────── Connectivity band — dark panel, same family as CTA/Footer ───────── */
+.connect { position: relative; overflow: clip; background: var(--color-paper-ink); color: var(--color-on-dark); border-radius: 0; }
+.connect__decor { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.connect__decor span { position: absolute; border-radius: 50%; filter: blur(90px); }
+.connect__decor .c1 { width: 560px; height: 500px; left: -14%; bottom: -32%; background: radial-gradient(circle, rgb(37 170 225 / 0.40), transparent 68%); } /* Brand/600 #25AAE1 */
+.connect__decor .c2 { width: 480px; height: 440px; right: -10%; top: -28%; background: radial-gradient(circle, rgb(51 175 229 / 0.28), transparent 68%); } /* Brand/500 #33AFE5 */
+.connect__decor .c3 { width: 360px; height: 320px; right: 18%; bottom: -18%; background: radial-gradient(circle, rgb(243 236 25 / 0.18), transparent 70%); } /* Accent/400 #F3EC19 */
+.connect__inner { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+.connect .pill-eyebrow { background: rgb(243 236 25 / 0.12); color: #F3EC19; } /* Accent/400 */
+.connect h2 { color: var(--color-on-dark); font-size: var(--text-4xl); margin-block: var(--space-md); }
+.connect > .connect__inner p.lead { color: var(--color-on-dark-2); font-size: var(--text-lg); line-height: 1.65; }
+.connect__stats { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: var(--space-xl);
+  border: 1px solid rgb(255 255 255 / 0.1); border-radius: var(--radius-lg); background: rgb(255 255 255 / 0.03); overflow: hidden; }
+.connect__stat { padding: var(--space-lg); border-inline-start: 1px solid rgb(255 255 255 / 0.1); border-block-start: 1px solid rgb(255 255 255 / 0.1); }
+.connect__stat:nth-child(1), .connect__stat:nth-child(2) { border-block-start: none; }
+.connect__stat:nth-child(odd) { border-inline-start: none; }
+.connect__stat b { display: block; font-family: var(--font-display); font-weight: 700; font-size: clamp(1.5rem, 2.4vw, 1.9rem); color: #F3EC19; letter-spacing: -0.02em; }
+.connect__stat span { font-size: var(--text-xs); color: var(--color-on-dark-2); }
+/* orbit visual — sky-blue accent, matches site's arc/onode language
+   geometry: ring gaps (60px) are kept wider than node diameter (38px) so nodes
+   on adjacent rings never touch, whatever angle they rotate to. --orb-scale
+   lets the whole diagram shrink uniformly on small screens without breaking that. */
+.orbit { position: relative; --orb-scale: 1; width: calc(460px * var(--orb-scale)); height: calc(460px * var(--orb-scale)); margin-inline: auto; }
+.orbit__ring { position: absolute; left: 50%; top: 50%; border-radius: 50%; border: 1.5px solid rgb(37 170 225 / 0.25); transform: translate(-50%, -50%); }
+.orbit__ring--1 { width: calc(160px * var(--orb-scale)); height: calc(160px * var(--orb-scale)); }
+.orbit__ring--2 { width: calc(280px * var(--orb-scale)); height: calc(280px * var(--orb-scale)); }
+.orbit__ring--3 { width: calc(400px * var(--orb-scale)); height: calc(400px * var(--orb-scale)); }
+.orbit__hub { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: calc(96px * var(--orb-scale)); height: calc(96px * var(--orb-scale)); border-radius: 50%;
+  background: linear-gradient(155deg, #33AFE5, #1D8CBB); display: grid; place-items: center; z-index: 3;
+  box-shadow: 0 0 0 calc(9px * var(--orb-scale)) rgb(37 170 225 / 0.14), 0 16px 40px rgb(8 20 40 / 0.55); }
+.orbit__hub b { font-family: var(--font-display); font-weight: 800; font-size: calc(0.78rem * var(--orb-scale)); color: #FAFCFE; letter-spacing: -0.01em; text-align: center; line-height: 1.15; }
+.orbit__logo { width: calc(60px * var(--orb-scale)); height: auto; filter: brightness(0) invert(1); }
+@keyframes orbitspin { to { transform: translate(-50%, -50%) rotate(1turn); } }
+.orbit__spin { position: absolute; left: 50%; top: 50%; width: 0; height: 0; animation: orbitspin var(--t, 30s) linear infinite; }
+.orbit__spin--rev { animation-direction: reverse; }
+.onode { position: absolute; left: 0; top: 0; width: calc(38px * var(--orb-scale)); height: calc(38px * var(--orb-scale)); margin: calc(-19px * var(--orb-scale));
+  transform: rotate(var(--a)) translateY(calc(-1 * var(--r) * var(--orb-scale))) rotate(calc(-1 * var(--a))); }
+.onode__in { width: 100%; height: 100%; border-radius: 50%; background: rgb(255 255 255 / 0.06); border: 1.5px solid rgb(37 170 225 / 0.35); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  display: grid; place-items: center; box-shadow: 0 8px 20px rgb(8 20 40 / 0.4); animation: orbitspin var(--t, 30s) linear infinite reverse; }
+.orbit__spin--rev .onode__in { animation-direction: normal; }
+.onode__in svg { width: calc(18px * var(--orb-scale)); height: calc(18px * var(--orb-scale)); color: #33AFE5; }
+.onode--y .onode__in { border-color: rgb(243 236 25 / 0.4); }
+.onode--y .onode__in svg { color: #F3EC19; }
+
+/* ───────── Company info ───────── */
+.company { --color-accent: #25AAE1; }
+.company__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(1.6rem, 3.5vw, 3rem); align-items: stretch; }
+.company__card { display: flex; flex-direction: column; gap: var(--space-md); padding: clamp(1.8rem, 3vw, 2.6rem); border-radius: var(--radius-lg);
+  background: var(--color-paper); border: 1px solid var(--color-rule-2); box-shadow: var(--shadow-sm); }
+.company__card h3 { font-size: var(--text-2xl); color: #1D8CBB; }
+.company__addr { font-size: var(--text-md); color: var(--color-ink-2); line-height: 1.7; }
+.contact-row { display: flex; align-items: center; gap: var(--space-sm); font-size: var(--text-md); color: var(--color-ink); padding: 0.55rem 0; border-top: 1px solid var(--color-rule-2); }
+.contact-row:first-of-type { border-top: none; }
+.contact-row .ci { width: 40px; height: 40px; border-radius: 11px; background: var(--color-accent-soft); color: #25AAE1; display: grid; place-items: center; flex: none; }
+.contact-row .ci svg { width: 19px; height: 19px; }
+.contact-row .cl { font-size: var(--text-xs); color: var(--color-muted); display: block; }
+.contact-row a:hover { color: #25AAE1; }
+.map-card { border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--color-rule-2); box-shadow: var(--shadow-sm); min-height: 320px; position: relative;
+  background: linear-gradient(165deg, #DCF1FF, #F3FBFE); display: flex; flex-direction: column; justify-content: flex-end; }
+.map-card__grid { position: absolute; inset: 0; opacity: 0.5;
+  background-image: linear-gradient(rgb(37 170 225 / 0.14) 1px, transparent 1px), linear-gradient(90deg, rgb(37 170 225 / 0.14) 1px, transparent 1px);
+  background-size: 34px 34px; }
+.map-card__pin { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); z-index: 2; }
+.map-card__pin svg { width: 46px; height: 46px; color: #25AAE1; filter: drop-shadow(0 8px 12px rgb(37 170 225 / 0.4)); }
+.map-card__pin::after { content: ""; position: absolute; left: 50%; bottom: -6px; transform: translateX(-50%); width: 26px; height: 8px; border-radius: 50%; background: rgb(37 170 225 / 0.28); filter: blur(2px); }
+.map-card__label { position: relative; z-index: 2; margin: var(--space-lg); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-md); background: rgb(255 255 255 / 0.9); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: var(--shadow-md); }
+.map-card__label b { display: block; font-family: var(--font-display); font-weight: 700; color: #1D8CBB; }
+.map-card__label span { font-size: var(--text-sm); color: var(--color-ink-2); }
+
+/* ───────── Final CTA ───────── */
+#demo { --color-accent: #25AAE1; --color-accent-strong: #1D8CBB; --color-accent-soft: #DCF1FF; --color-highlight: #F3EC19; --color-cyan: #33AFE5; --glow-accent: 0 0 0 1px rgb(37 170 225 / 0.30), 0 16px 44px rgb(37 170 225 / 0.32); }
+.cta__card { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem);
+  padding: clamp(2rem, 4vw, 3.5rem); border-radius: var(--radius-xl); background: var(--color-paper-ink); color: var(--color-on-dark); }
+.cta__card::before { content: ""; position: absolute; inset: 0; z-index: 0; background: radial-gradient(45% 80% at 88% 8%, rgb(37 170 225 / 0.55), transparent 65%), radial-gradient(40% 70% at 10% 100%, rgb(51 175 229 / 0.35), transparent 65%), radial-gradient(30% 50% at 50% 0%, rgb(243 236 25 / 0.22), transparent 70%); }
+.cta__copy, .cta__form { position: relative; z-index: 1; }
+.cta__copy .pill-eyebrow { background: oklch(100% 0 0 / 0.1); color: var(--color-highlight); }
+.cta__copy h2 { color: var(--color-on-dark); font-size: var(--text-4xl); margin-block: var(--space-md); }
+.cta__copy > p { color: var(--color-on-dark-2); font-size: var(--text-lg); }
+.cta__split { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-rule-dark); }
+.cta__split .lbl { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-on-dark-2); }
+.cta__split p { color: var(--color-on-dark-2); font-size: var(--text-sm); margin-block: var(--space-xs) var(--space-md); }
+.form { display: flex; flex-direction: column; gap: var(--space-sm); background: var(--color-paper); border-radius: var(--radius-card); padding: var(--space-lg); box-shadow: var(--shadow-lg); }
+.form h3 { font-size: var(--text-xl); margin-bottom: var(--space-xs); }
+.field label { display: block; font-size: var(--text-xs); color: var(--color-ink-2); margin-bottom: 4px; font-weight: 600; }
+.field input, .field textarea { width: 100%; font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-ink); padding: 0.75rem 0.9rem; border: 1px solid var(--color-rule); border-radius: var(--radius-sm); background: var(--color-paper-2); transition: border-color var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out); }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px var(--color-accent-soft); }
+.field textarea { resize: vertical; min-height: 74px; }
+.form .btn { justify-content: center; margin-top: var(--space-xs); }
+
+/* ───────── Footer w/ giant watermark ───────── */
+.footer { --color-accent: #25AAE1; --color-highlight: #F3EC19; position: relative; background: var(--color-paper-ink); color: var(--color-on-dark-2); padding-block: var(--space-2xl) 0; overflow: clip; }
+.footer__mast { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr)); gap: var(--space-xl); padding-bottom: var(--space-xl); border-bottom: 1px solid var(--color-rule-dark); }
+.footer .brand { color: var(--color-on-dark); font-size: 1.7rem; }
+.footer .brand--logo { color: #25AAE1; font-size: 1.5rem; }
+.footer__tag { font-size: var(--text-sm); margin-top: var(--space-md); max-width: 34ch; line-height: 1.6; }
+.footer__social { display: flex; gap: var(--space-sm); margin-top: var(--space-lg); }
+.footer__social a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--color-rule-dark); display: grid; place-items: center; color: var(--color-on-dark-2); transition: color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out); }
+.footer__social a:hover { color: var(--color-highlight); border-color: var(--color-highlight); }
+.footer__social svg { width: 17px; height: 17px; }
+.footer__col h4 { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-on-dark); font-weight: 500; margin-bottom: var(--space-md); }
+.footer__col a { display: block; font-size: var(--text-sm); padding: 0.3rem 0; color: var(--color-on-dark-2); transition: color var(--dur-short) var(--ease-out); }
+.footer__col a:hover { color: var(--color-highlight); }
+.footer__bot { display: flex; flex-wrap: wrap; gap: var(--space-md); justify-content: space-between; align-items: center; padding-block: var(--space-lg); font-size: var(--text-xs); color: var(--color-muted); position: relative; z-index: 1; }
+.footer__botr { display: flex; align-items: center; gap: var(--space-lg); }
+.footer__top { display: inline-grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 50%; background: rgb(255 255 255 / 0.06); border: 1px solid var(--color-rule-dark); color: var(--color-on-dark-2); cursor: pointer; transition: color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out); }
+.footer__top:hover { color: var(--color-highlight); border-color: var(--color-highlight); background: rgb(255 255 255 / 0.1); transform: translateY(-3px); }
+.footer__top svg { width: 18px; height: 18px; }
+.footer__mark { position: relative; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: clamp(4rem, 22vw, 18rem); line-height: 0.8; letter-spacing: -0.04em;
+  background: linear-gradient(180deg, oklch(34% 0.05 260), transparent); -webkit-background-clip: text; background-clip: text; color: transparent; margin-top: var(--space-lg); pointer-events: none; user-select: none; }
+
+/* ───────── Reveal ───────── */
+.reveal { opacity: 0; transform: translateY(16px); animation: reveal var(--dur-long) var(--ease-out) forwards; }
+.reveal-1 { animation-delay: 0.05s; } .reveal-2 { animation-delay: 0.14s; } .reveal-3 { animation-delay: 0.23s; } .reveal-4 { animation-delay: 0.32s; }
+@keyframes reveal { to { opacity: 1; transform: none; } }
+
+/* ───────── Responsive ───────── */
+@media (max-width: 60rem) {
+  .about-hero__grid { grid-template-columns: minmax(0, 1fr); gap: var(--space-2xl); }
+  .about-hero__copy { order: 2; }
+  .emblem { order: 1; max-width: 420px; margin-inline: auto; width: 100%; }
+  .emblem__badge { right: 6px; }
+  .stats__grid, .connect__inner, .company__grid { grid-template-columns: minmax(0, 1fr); }
+  .prod__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .orbit { --orb-scale: 0.8; }
+  .footer__mast { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .nav__links { display: none; margin-inline: 0; }
+  .nav__menu { display: inline-flex; }
+  .nav.is-open .nav__links {
+    display: flex; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 2px; margin: 0;
+    padding: var(--space-sm) clamp(1.1rem, 4vw, 2rem) var(--space-md);
+    background: var(--color-paper); border-top: 1px solid var(--color-rule-2);
+    box-shadow: 0 22px 44px rgb(20 40 80 / 0.14); }
+  .nav.is-open .nav__links > a:not(.btn), .nav.is-open .nav__mega-trigger { padding: 0.8rem 0.4rem; font-size: var(--text-md); color: var(--color-ink); }
+  .nav.is-open .nav__links > a:not(.btn) { display: block; }
+  .nav.is-open .nav__links > a::after { display: none; }
+  .nav.is-open .nav__item--mega { display: block; }
+  .nav.is-open .nav__mega-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+  .nav.is-open .nav__mega-trigger svg { transition: transform 0.25s var(--ease-out); }
+  .nav.is-open .nav__item--mega.is-expanded .nav__mega-trigger svg { transform: rotate(180deg); }
+  .nav.is-open .nav__mega { display: block; position: static; opacity: 1; visibility: visible; transform: none; padding: 0; overflow: hidden; max-height: 0; transition: max-height 0.32s var(--ease-out); pointer-events: auto; }
+  .nav.is-open .nav__item--mega.is-expanded .nav__mega { max-height: 520px; }
+  .nav.is-open .nav__mega-inner { width: auto; grid-template-columns: 1fr; box-shadow: none; border: none; background: transparent; padding: 2px 0 6px 0.6rem; gap: 0; }
+  .nav.is-open .nav__mega-inner a { padding: 0.55rem 0.5rem; border-radius: var(--radius-sm); }
+  .nav.is-open .nav__login-m { display: block; border-top: 1px solid var(--color-rule-2); margin-top: var(--space-xs); padding-top: 0.9rem; color: #525252; }
+  .nav.is-open .nav__cta-m { display: inline-flex; justify-content: center; margin-top: var(--space-sm); color: var(--color-accent-ink); }
+}
+@media (max-width: 40rem) {
+  .seam__grid, .prod__grid { grid-template-columns: minmax(0, 1fr); }
+  .cta__card { grid-template-columns: minmax(0, 1fr); }
+  .orbit { --orb-scale: 0.62; }
+  .footer__mast { grid-template-columns: 1fr 1fr; }
+  .footer__mast > :first-child { grid-column: 1 / -1; }
+  .about-hero__cta .btn { width: 100%; justify-content: center; }
+  .nav__login { display: none; }
+  .nav__actions { margin-inline-start: auto; }
+  .nav__actions .btn--primary { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ───────── Nav ───────── -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="brand brand--logo" aria-label="KargoOke beranda"><img src="assets/logo.png" alt="KargoOke" /></a>
+    <nav class="nav__links" aria-label="Utama">
+      <a href="index.html">Home</a>
+      <div class="nav__item--mega">
+        <a href="index.html#produk" class="nav__mega-trigger">Produk &amp; Layanan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="nav__mega">
+          <div class="nav__mega-inner">
+            <a href="OkeComply.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span><span class="mm__tx"><b>OkeComply</b><span>Deklarasi pabean · CEISA 4.0</span></span></a>
+            <a href="OkeShip.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h12v9H1zM13 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="16.5" cy="19" r="1.8"/></svg></span><span class="mm__tx"><b>OkeShip</b><span>Manajemen pengiriman &amp; forwarding</span></span></a>
+            <a href="OkePort.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M5 12H3a9 9 0 0 0 18 0h-2"/></svg></span><span class="mm__tx"><b>OkePort</b><span>Operasi &amp; jaringan pelabuhan</span></span></a>
+            <a href="OkeDebit.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span><span class="mm__tx"><b>OkeDebit</b><span>Wallet &amp; embedded financing</span></span></a>
+            <a href="OkeData.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></span><span class="mm__tx"><b>OkeData</b><span>Penyimpanan &amp; arsip data</span></span></a>
+            <a href="OkeBiz.html"><span class="mm__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></span><span class="mm__tx"><b>OkeBiz</b><span>Business intelligence &amp; integrasi</span></span></a>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#blog">OkeTalks</a>
+      <a href="TentangKami.html" class="is-active">Tentang Kami</a>
+      <a href="index.html#login" class="nav__login-m">Masuk</a>
+      <a href="demo-gratis.html" class="btn btn--primary nav__cta-m">Demo Gratis <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </nav>
+    <div class="nav__actions">
+      <a href="index.html#login" class="nav__login">Masuk</a>
+      <a href="demo-gratis.html" class="btn btn--primary">Demo Gratis <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <button class="nav__menu" aria-label="Buka menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="nav-spacer" id="top"></div>
+
+<!-- ───────── About hero (editorial split) ───────── -->
+<section class="about-hero">
+  <div class="about-hero__decor" aria-hidden="true"><span class="g1"></span><span class="g2"></span></div>
+  <div class="wrap">
+    <div class="about-hero__grid">
+      <div class="about-hero__copy">
+        <span class="pill-eyebrow reveal reveal-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>Tentang Kami</span>
+        <h1 class="reveal reveal-2">Kami di sini bikin logistik jadi <span class="mark accent">menyenangkan</span>.</h1>
+        <p class="about-hero__lede reveal reveal-3">Sejak awal, misi kami sederhana: menghubungkan seluruh stakeholder logistik &amp; perbankan dalam satu platform berbasis web — supaya proses yang dulu bikin <em>stres</em> berubah jadi mulus dan menyenangkan.</p>
+        <div class="about-hero__sign reveal reveal-3">PT Solusi Oke Logistik · Jakarta, Indonesia</div>
+        <div class="about-hero__cta reveal reveal-4">
+          <a href="demo-gratis.html" class="btn btn--primary">Dapatkan Demo Gratis <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a href="index.html#produk" class="btn btn--ghost">Lihat Produk &amp; Layanan</a>
+        </div>
+        <div class="about-hero__stats reveal reveal-4">
+          <div class="about-hero__stat"><b>8</b><span>Produk terintegrasi</span></div>
+          <div class="about-hero__stat"><b>360°</b><span>Konektivitas stakeholder</span></div>
+          <div class="about-hero__stat"><b>End-to-end</b><span>Deklarasi &amp; pembayaran</span></div>
+        </div>
+      </div>
+      <div class="emblem-wrap reveal reveal-3">
+        <div class="emblem" aria-label="KargoOke — Where Logistics Become Fun">
+          <div class="emblem__deco" aria-hidden="true">
+            <span class="emblem__cloud c1"></span>
+            <span class="emblem__cloud c2"></span>
+            <span class="emblem__arc a1"></span>
+            <span class="emblem__arc a2"></span>
+            <span class="emblem__plus p1"></span>
+            <span class="emblem__plus p2"></span>
+          </div>
+          <div class="emblem__face">
+            <div class="emblem__eyes" aria-hidden="true"><i class="o-dot"></i><i class="o-ring"></i></div>
+            <svg class="emblem__smile" viewBox="0 0 168 60" fill="none" aria-hidden="true"><path d="M8 10c22 44 130 44 152 0" stroke="#F3EC19" stroke-width="16" stroke-linecap="round"/></svg>
+            <div class="emblem__tag">Where Logistics<br />Become <span>Fun</span></div>
+          </div>
+        </div>
+        <div class="emblem__badge" aria-hidden="true">
+          <span class="eb-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <span><b>ISO 27001:2022</b><span>PSE · SIUP MSE · CEISA 4.0</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Indonesia potential / LPI ───────── -->
+<section class="section stats">
+  <div class="wrap">
+    <div class="head head--left">
+      <span class="pill-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 3 5-6"/></svg>Kenapa KargoOke</span>
+      <h2>Indonesia punya <span class="accent">potensi besar</span> untuk perbaikan bisnis &amp; logistik di Asia.</h2>
+    </div>
+    <div class="stats__grid">
+      <div class="stat-call">
+        <div class="stat-call__num">24<sub>% PDB</sub></div>
+        <p class="stat-call__lbl">Biaya logistik Indonesia masih tergolong tinggi di Asia, mencapai sekitar <strong>24% dari Produk Domestik Bruto (PDB)</strong> negara.</p>
+        <span class="stat-call__tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>Sumber: World Bank LPI 2023</span>
+      </div>
+      <div class="lpi">
+        <div class="lpi__cap">Skor LPI 2023 — Indonesia vs Negara Asia</div>
+        <div class="lpi__scroll">
+          <table>
+            <thead>
+              <tr><th>Indikator</th><th>Indonesia</th><th>Kamboja</th><th>Vietnam</th><th>Thailand</th><th>Malaysia</th><th>Filipina</th><th>Singapura</th></tr>
+            </thead>
+            <tbody>
+              <tr><th>LPI Rank</th><td class="ind">61</td><td>115</td><td>43</td><td>34</td><td>26</td><td>43</td><td>1</td></tr>
+              <tr><th>LPI Score</th><td class="ind">3.0</td><td>2.4</td><td>3.3</td><td>3.5</td><td>3.6</td><td>3.3</td><td>4.3</td></tr>
+              <tr class="hot"><th>Customs</th><td class="ind">2.8</td><td>2.2</td><td>3.1</td><td>3.3</td><td>3.3</td><td>2.8</td><td>4.2</td></tr>
+              <tr><th>Infrastructure</th><td class="ind">2.9</td><td>2.1</td><td>3.2</td><td>3.7</td><td>3.6</td><td>3.2</td><td>4.6</td></tr>
+              <tr><th>International shipments</th><td class="ind">3.0</td><td>2.3</td><td>3.3</td><td>3.5</td><td>3.7</td><td>3.1</td><td>4.0</td></tr>
+              <tr><th>Logistics competency</th><td class="ind">2.9</td><td>2.4</td><td>3.2</td><td>3.5</td><td>3.7</td><td>3.3</td><td>4.4</td></tr>
+              <tr><th>Timeliness</th><td class="ind">3.3</td><td>2.7</td><td>3.3</td><td>3.5</td><td>3.9</td><td>3.9</td><td>4.3</td></tr>
+              <tr><th>Tracking and tracing</th><td class="ind">3.0</td><td>2.8</td><td>3.4</td><td>3.6</td><td>3.7</td><td>3.3</td><td>4.4</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="lpi__note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg><span>Dibanding negara tetangga di Asia, Indonesia masih punya ruang perbaikan — terutama di sektor <strong>customs</strong>, yang paling butuh perhatian. Di sinilah KargoOke hadir.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Seamless / customs ───────── -->
+<section class="section section--tint seamless">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 10-12h-7z"/></svg>Cara Kami</span>
+      <h2>KargoOke: <span class="accent">membuat semua lebih mudah</span> dengan cara yang seamless.</h2>
+      <p>Menghubungkan seluruh pihak dalam satu alur — dari operasi logistik sampai pembayaran, terhubung langsung ke sistem kepabeanan nasional.</p>
+    </div>
+    <div class="seam__grid">
+      <article class="seam">
+        <div class="seam__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Tidak ada lagi logistik yang bikin stres</h3>
+        <ul class="seam__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Logistik sering bikin stres karena konektivitas antar-stakeholder yang buruk — waktu, energi, dan uang terbuang percuma.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>KargoOke, platform end-to-end berbasis web, menghubungkan semua stakeholder logistik dan layanan perbankan dalam satu tempat.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Kelola seluruh operasi logistik termasuk proses pembayaran <em>real-time</em> secara seamless — proses stressful berubah jadi fun.</span></li>
+        </ul>
+      </article>
+      <article class="seam">
+        <div class="seam__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7H5a3 3 0 0 0 0 6h3m8-6h3a3 3 0 0 1 0 6h-3M8 10h8"/></svg></div>
+        <h3>Terhubung langsung ke Bea Cukai</h3>
+        <ul class="seam__list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Keunggulan utama KargoOke: terhubung langsung dengan <strong>CEISA 4.0</strong> dan <strong>INSW</strong> — bebas dari ribetnya urusan deklarasi kepabeanan.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span>Data mengalir mulus antara sistem Anda dan DJBC — tanpa entri ulang, tanpa pindah aplikasi.</span></li>
+        </ul>
+        <div class="badges">
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>PSE Kominfo</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>SIUP MSE</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>ISO 27001:2022</span>
+          <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg>CEISA 4.0 &amp; INSW</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Products ───────── -->
+<section class="section prods" id="produk">
+  <div class="wrap">
+    <div class="head">
+      <span class="pill-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7 12 3 4 7v10l8 4 8-4z"/><path d="M4 7l8 4 8-4M12 11v10"/></svg>Produk &amp; Layanan</span>
+      <h2>Produk &amp; layanan kami yang <span class="accent">lengkap &amp; beragam</span>.</h2>
+      <p>Satu ekosistem untuk seluruh perjalanan logistik Anda — dari compliance hingga pembayaran dan data.</p>
+    </div>
+    <div class="prod__grid">
+      <a class="prod" href="OkeComply.html">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>OkeComply</h3>
+        <p>Proses compliance yang seamless &amp; terintegrasi.</p>
+        <span class="prod__link">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="prod" href="OkeShip.html">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h12v9H1zM13 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="16.5" cy="19" r="1.8"/></svg></div>
+        <h3>OkeShip</h3>
+        <p>Konektivitas shipping line &amp; air lines dalam genggaman.</p>
+        <span class="prod__link">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="prod" href="OkePort.html">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M5 12H3a9 9 0 0 0 18 0h-2"/></svg></div>
+        <h3>OkePort</h3>
+        <p>Hubungkan bisnis Anda ke komunitas pelabuhan.</p>
+        <span class="prod__link">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="prod" href="OkeDebit.html">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></div>
+        <h3>OkeDebit</h3>
+        <p>Kartu debit virtual untuk semua transaksi logistik.</p>
+        <span class="prod__link">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="prod" href="OkeData.html">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+        <h3>OkeData</h3>
+        <p>Manajemen &amp; repositori data untuk segala keperluan.</p>
+        <span class="prod__link">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <a class="prod" href="OkeBiz.html">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></div>
+        <h3>OkeBiz</h3>
+        <p>Sederhanakan proses logistik dengan solusi kustom.</p>
+        <span class="prod__link">Pelajari <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+      <div class="prod">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 7h11v8H1zM12 10h5l3 3v2h-8z"/><circle cx="5" cy="17" r="1.8"/><circle cx="16" cy="17" r="1.8"/></svg></div>
+        <h3>OkeGo</h3>
+        <p>Manajemen pengiriman yang traceable &amp; andal.</p>
+        <span class="prod__link" style="color:var(--color-muted)">Segera hadir</span>
+      </div>
+      <div class="prod">
+        <div class="prod__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l3-1 11-11-2-2L4 18z"/><path d="M14 6l2 2M3 21h18"/></svg></div>
+        <h3>OkeStamp</h3>
+        <p>Dokumen logistik ditandatangani secara digital.</p>
+        <span class="prod__link" style="color:var(--color-muted)">Segera hadir</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 360° Connectivity ───────── -->
+<section class="section connect">
+  <div class="connect__decor" aria-hidden="true"><span class="c1"></span><span class="c2"></span><span class="c3"></span></div>
+  <div class="wrap">
+    <div class="connect__inner">
+      <div>
+        <span class="pill-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg>Ekosistem</span>
+        <h2>Konektivitas 360° untuk semua stakeholder logistik.</h2>
+        <p class="lead">Dari upstream sampai downstream — pelabuhan, pelayaran, terminal, bank, hingga bea cukai — semua terhubung dalam satu platform yang mengalir mulus.</p>
+        <div class="connect__stats">
+          <div class="connect__stat"><b>8</b><span>Produk terintegrasi dalam satu ekosistem</span></div>
+          <div class="connect__stat"><b>End-to-end</b><span>Dari deklarasi sampai pembayaran</span></div>
+          <div class="connect__stat"><b>Real-time</b><span>Proses &amp; pembayaran tanpa jeda</span></div>
+          <div class="connect__stat"><b>1 Platform</b><span>Semua stakeholder, satu tempat</span></div>
+        </div>
+      </div>
+      <div class="orbit" aria-hidden="true">
+        <span class="orbit__ring orbit__ring--1"></span>
+        <span class="orbit__ring orbit__ring--2"></span>
+        <span class="orbit__ring orbit__ring--3"></span>
+        <div class="orbit__spin" style="--t:34s">
+          <span class="onode onode--y" style="--a:15deg;--r:80px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></span></span>
+          <span class="onode" style="--a:195deg;--r:80px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span></span>
+        </div>
+        <div class="orbit__spin orbit__spin--rev" style="--t:28s">
+          <span class="onode" style="--a:-55deg;--r:140px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 8h12v9H1zM13 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.8"/><circle cx="16.5" cy="19" r="1.8"/></svg></span></span>
+          <span class="onode onode--y" style="--a:65deg;--r:140px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2.5"/><path d="M12 7.5V21M5 12H3a9 9 0 0 0 18 0h-2"/></svg></span></span>
+          <span class="onode" style="--a:185deg;--r:140px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/></svg></span></span>
+        </div>
+        <div class="orbit__spin" style="--t:44s">
+          <span class="onode" style="--a:-15deg;--r:200px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 14l3-3 3 3 5-6"/></svg></span></span>
+          <span class="onode onode--y" style="--a:105deg;--r:200px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 7h11v8H1zM12 10h5l3 3v2h-8z"/><circle cx="5" cy="17" r="1.8"/><circle cx="16" cy="17" r="1.8"/></svg></span></span>
+          <span class="onode" style="--a:225deg;--r:200px"><span class="onode__in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21l3-1 11-11-2-2L4 18z"/><path d="M14 6l2 2"/></svg></span></span>
+        </div>
+        <div class="orbit__hub"><img class="orbit__logo" src="assets/logo-kargooke-smile.png" alt="KargoOke" /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Company info ───────── -->
+<section class="section company" id="kontak">
+  <div class="wrap">
+    <div class="head head--left">
+      <span class="pill-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Kontak</span>
+      <h2>PT Solusi Oke Logistik</h2>
+    </div>
+    <div class="company__grid">
+      <div class="company__card">
+        <h3>Kantor Pusat</h3>
+        <p class="company__addr">The Kensington Office Tower, Lt. 1, Unit A<br />Jl. Boulevard Raya No. 1, Kelapa Gading Timur<br />Jakarta Utara 14240, Indonesia</p>
+        <div class="contact-row"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.4-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><span><span class="cl">Telepon</span><a href="tel:+62214062190">+62 21 4062-2190</a></span></div>
+        <div class="contact-row"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></span><span><span class="cl">Email</span><a href="mailto:fun@kargooke.com">fun@kargooke.com</a></span></div>
+        <div class="contact-row"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/></svg></span><span><span class="cl">Website</span><a href="https://www.kargooke.com">www.kargooke.com</a></span></div>
+        <div class="contact-row"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 20l1-4.1A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span><span class="cl">Customer Support / WhatsApp</span><a href="tel:08118813004">0811 8813 004</a></span></div>
+      </div>
+      <div class="map-card">
+        <iframe title="Lokasi PT Solusi Oke Logistik (KargoOke)" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5087.480062435683!2d106.8971086!3d-6.1729175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5e392b28317%3A0x34c538f01bb4d2fa!2sPT.%20Solusi%20Oke%20Logistik%20(KargoOke)!5e1!3m2!1sen!2sid!4v1784772203878!5m2!1sen!2sid" style="position:absolute;inset:0;width:100%;height:100%;border:0" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Final CTA ───────── -->
+<section class="section" id="demo">
+  <div class="wrap">
+    <div class="cta__card">
+      <div class="cta__copy">
+        <span class="pill-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>Gabung Sekarang</span>
+        <h2>Temukan pengalaman logistik yang fun bersama KargoOke.</h2>
+        <p>Rasakan bagaimana platform all-in-one kami menyederhanakan seluruh alur logistik Anda — disesuaikan dengan kebutuhan bisnis.</p>
+        <div class="cta__split" id="login">
+          <div class="lbl">Sudah jadi pelanggan?</div>
+          <p>Akses portal B2B Anda untuk kelola dokumen &amp; tim.</p>
+          <a href="index.html#login" class="btn btn--on-dark">Masuk Portal B2B <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg></a>
+        </div>
+      </div>
+      <form class="cta__form form" onsubmit="return false">
+        <h3>Dapatkan Demo Gratis</h3>
+        <div class="field"><label for="f-name">Nama</label><input id="f-name" type="text" placeholder="Nama lengkap Anda" autocomplete="name" /></div>
+        <div class="field"><label for="f-email">Email kerja</label><input id="f-email" type="email" placeholder="nama@perusahaan.com" autocomplete="email" /></div>
+        <div class="field"><label for="f-msg">Pesan</label><textarea id="f-msg" placeholder="Ceritakan kebutuhan logistik Anda…"></textarea></div>
+        <button type="submit" class="btn btn--primary">Kirim &amp; jadwalkan demo <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Footer ───────── -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__mast">
+      <div>
+        <a href="index.html" class="brand brand--logo" aria-label="KargoOke beranda"><img src="assets/logo-white.png" alt="KargoOke" /></a>
+        <p class="footer__tag">Platform digital logistik all-in-one dari PT Solusi Oke Logistik — menghubungkan seluruh stakeholder logistik Indonesia.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2.05 1.4-2.05 2.8V21h-4z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 3h3l-7 8 8 10h-6l-5-6-5 6H3l7-9L2 3h6l4 5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col"><h4>Produk</h4><a href="OkeComply.html">OkeCOMPLY</a><a href="OkeShip.html">OkeSHIP</a><a href="OkePort.html">OkePORT</a><a href="OkeData.html">OkeDATA</a><a href="OkeBiz.html">OkeBIZ</a></div>
+      <div class="footer__col"><h4>Perusahaan</h4><a href="TentangKami.html">Tentang Kami</a><a href="index.html#blog">OkeTalk</a><a href="#kontak">Hubungi Kami</a></div>
+      <div class="footer__col"><h4>Akun</h4><a href="index.html#login">Masuk Portal B2B</a><a href="demo-gratis.html">Demo Gratis</a><a href="#kontak">Kontak</a></div>
+    </div>
+    <div class="footer__bot">
+      <span>© 2026 KargoOke — PT Solusi Oke Logistik. All rights reserved.</span>
+      <div class="footer__botr">
+        <span>Berizin &amp; terdaftar — Kementerian Perdagangan RI</span>
+        <button class="footer__top" type="button" aria-label="Kembali ke atas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+      </div>
+    </div>
+    <div class="footer__mark" aria-hidden="true">KargoOke</div>
+  </div>
+</footer>
+
+<script>
+// mobile burger menu + product submenu accordion
+(function(){
+  var nav = document.querySelector('.nav');
+  var burger = nav && nav.querySelector('.nav__menu');
+  if(!burger) return;
+  var mega = nav.querySelector('.nav__item--mega');
+  var trigger = mega && mega.querySelector('.nav__mega-trigger');
+  function closeMenu(){ nav.classList.remove('is-open'); if(mega) mega.classList.remove('is-expanded'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = nav.classList.toggle('is-open');
+    if(!open && mega) mega.classList.remove('is-expanded');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  if(trigger){
+    trigger.addEventListener('click', function(e){
+      if(window.matchMedia('(max-width: 60rem)').matches){
+        e.preventDefault();
+        var exp = mega.classList.toggle('is-expanded');
+        trigger.setAttribute('aria-expanded', exp ? 'true' : 'false');
+      }
+    });
+  }
+  nav.querySelectorAll('.nav__links a:not(.nav__mega-trigger)').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+})();
+// back to top
+(function(){
+  var btn = document.querySelector('.footer__top');
+  if(btn) btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+</body>
+</html>
